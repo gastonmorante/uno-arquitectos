@@ -69,20 +69,6 @@ export default function Hero() {
           </div>
         </div>
       </div>
-
-      {/* Bottom Scroll Indicator on Left */}
-      <div 
-        onClick={() => scrollToSection("filosofia")}
-        className="absolute bottom-10 left-12 hidden md:flex items-center gap-3 cursor-pointer group z-20"
-      >
-        <div className="flex items-center gap-3 bg-black/70 hover:bg-black/90 border border-zinc-700/50 hover:border-[#0B9488]/60 px-5 py-3 rounded-full transition-all duration-300 shadow-xl backdrop-blur-md">
-          <span className="w-1.5 h-1.5 bg-[#0B9488] rounded-full animate-ping"></span>
-          <span className="text-zinc-100 hover:text-white text-[10px] tracking-[0.4em] uppercase font-mono font-semibold transition-colors">
-            {scrollText}
-          </span>
-          <MoveDown className="w-3.5 h-3.5 text-[#0B9488] animate-bounce transition-transform group-hover:translate-y-0.5" />
-        </div>
-      </div>
     </section>
   );
 }

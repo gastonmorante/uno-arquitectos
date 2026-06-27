@@ -20,7 +20,7 @@ export const Logo: React.FC<LogoProps> = ({
   theme = "adaptive",
   textSize = "text-sm"
 }) => {
-  // Determine colors based on scroll state and theme
+  // Determine color based on scroll state and theme
   const isAdaptiveDark = theme === "adaptive" && isScrolled;
   const brandColor = isAdaptiveDark ? "text-zinc-900" : "text-[#0B9488]";
   const titleColor = isAdaptiveDark ? "text-zinc-950" : "text-white";
@@ -42,12 +42,12 @@ export const Logo: React.FC<LogoProps> = ({
 
           {/* TOP-RIGHT SEGMENT */}
           <g transform="translate(3, -2)">
-            <path d="M 100 20 L 169.28 60 L 169.28 140 L 130.31 117.5 L 130.31 82.5 L 100 65 Z" opacity="0.45" />
+            <path d="M 100 20 L 169.28 60 L 169.28 140 L 130.31 117.5 L 130.31 82.5 L 100 65 Z" />
           </g>
 
           {/* BOTTOM SEGMENT */}
           <g transform="translate(0, 4)">
-            <path d="M 30.72 140 L 100 180 L 169.28 140 L 130.31 117.5 L 100 135 L 69.69 117.5 Z" opacity="0.8" />
+            <path d="M 30.72 140 L 100 180 L 169.28 140 L 130.31 117.5 L 100 135 L 69.69 117.5 Z" />
           </g>
         </svg>
       );
@@ -64,8 +64,8 @@ export const Logo: React.FC<LogoProps> = ({
         <g transform="translate(-3, -2)">
           <motion.path
             d="M 100 20 L 30.72 60 L 30.72 140 L 69.69 117.5 L 69.69 82.5 L 100 65 Z"
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 0.95, y: 0 }}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 0.95, scale: 1 }}
             transition={{ duration: 1, ease: "easeOut" }}
           />
         </g>
@@ -74,8 +74,8 @@ export const Logo: React.FC<LogoProps> = ({
         <g transform="translate(3, -2)">
           <motion.path
             d="M 100 20 L 169.28 60 L 169.28 140 L 130.31 117.5 L 130.31 82.5 L 100 65 Z"
-            initial={{ opacity: 0, x: 10 }}
-            animate={{ opacity: 0.45, x: 0 }}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 0.95, scale: 1 }}
             transition={{ duration: 1, delay: 0.25, ease: "easeOut" }}
           />
         </g>
@@ -84,8 +84,8 @@ export const Logo: React.FC<LogoProps> = ({
         <g transform="translate(0, 4)">
           <motion.path
             d="M 30.72 140 L 100 180 L 169.28 140 L 130.31 117.5 L 100 135 L 69.69 117.5 Z"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 0.8, y: 0 }}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 0.95, scale: 1 }}
             transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
           />
         </g>
