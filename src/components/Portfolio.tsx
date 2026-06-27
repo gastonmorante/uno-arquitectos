@@ -47,6 +47,7 @@ export default function Portfolio() {
                     src={item.image}
                     alt={language === "es" ? item.titleEs : item.titleEn}
                     referrerPolicy="no-referrer"
+                    loading="lazy"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
@@ -120,6 +121,7 @@ export default function Portfolio() {
                       src={activeImage || selectedProject.image}
                       alt={language === "es" ? selectedProject.titleEs : selectedProject.titleEn}
                       referrerPolicy="no-referrer"
+                      loading="lazy"
                       className="w-full h-full object-cover transition-all duration-500"
                     />
                     <div className="absolute bottom-4 left-4 bg-black/70 backdrop-blur-md px-4 py-2 text-white text-[10px] font-mono tracking-wider">
@@ -139,7 +141,7 @@ export default function Portfolio() {
                             isSelected ? "border-[#0B9488] scale-105 ring-1 ring-[#0B9488]" : "border-zinc-800 hover:border-zinc-500"
                           }`}
                         >
-                          <img src={img.url} alt={img.name} className="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity" />
+                          <img src={img.url} alt={img.name} loading="lazy" className="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity" />
                           <div className="absolute inset-0 bg-black/30 group-hover:bg-transparent transition-colors"></div>
                           <span className="absolute bottom-0 left-0 right-0 bg-black/85 text-[7px] text-white font-mono text-center truncate py-0.5 tracking-widest uppercase">
                             {img.name}

@@ -228,6 +228,24 @@ export default function AIConsultant() {
       setLeadEmail(emailVal);
       setOnboardingStep("completed");
 
+      // Trigger Google Analytics 4 & Meta Pixel Tracking Events
+      if (typeof window !== "undefined") {
+        const win = window as any;
+        if (win.gtag) {
+          win.gtag('event', 'generate_lead', {
+            event_category: 'ai_chat',
+            event_label: 'Consultor AI Onboarding',
+            value: 1
+          });
+        }
+        if (win.fbq) {
+          win.fbq('track', 'Lead', {
+            content_name: 'Consultor AI Onboarding',
+            status: 'success'
+          });
+        }
+      }
+
       try {
         // Send data to GHL-ready CRM backend route
         await fetch("/api/leads", {

@@ -45,6 +45,24 @@ export default function Contacto() {
         })
       });
 
+      // Trigger Google Analytics 4 & Meta Pixel Tracking Events
+      if (typeof window !== "undefined") {
+        const win = window as any;
+        if (win.gtag) {
+          win.gtag('event', 'generate_lead', {
+            event_category: 'contact',
+            event_label: 'Formulario de Contacto',
+            value: 1
+          });
+        }
+        if (win.fbq) {
+          win.fbq('track', 'Lead', {
+            content_name: 'Formulario de Contacto',
+            status: 'success'
+          });
+        }
+      }
+
       // 3. Prepare personalized welcome message for WhatsApp
       const welcomeText = language === "es"
         ? `Hola UNO Arquitectos, acabo de registrarme en su formulario de contacto. Mi nombre es ${name}, mi correo es ${email} y mi teléfono es ${phone}. Me interesa recibir asesoría técnica y atención inmediata para mi proyecto.`
