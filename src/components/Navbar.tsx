@@ -28,9 +28,9 @@ export default function Navbar() {
   return (
     <nav
       id="navbar"
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 border-b ${
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 font-sans border-b ${
         isScrolled
-          ? "bg-white/95 backdrop-blur-md py-4 border-zinc-200/40 shadow-sm text-zinc-950"
+          ? "bg-white/95 backdrop-blur-md py-4 border-zinc-200/40 shadow-xs text-[#4A4A4A]"
           : "bg-transparent py-6 border-transparent text-white"
       }`}
     >
@@ -53,44 +53,44 @@ export default function Navbar() {
         </div>
 
         {/* DESKTOP NAV */}
-        <div className="hidden md:flex items-center space-x-10 text-[10px] font-semibold uppercase tracking-[0.4em]">
+        <div className="hidden md:flex items-center space-x-10 text-xs font-semibold uppercase tracking-[0.25em]">
           <button
             onClick={() => scrollToSection("filosofia")}
-            className={`transition-colors cursor-pointer ${
-              isScrolled ? "text-zinc-600 hover:text-accent" : "text-white/80 hover:text-accent"
+            className={`transition-colors cursor-pointer hover:text-[#00A3A3] ${
+              isScrolled ? "text-[#4A4A4A]" : "text-white/90"
             }`}
           >
             {t("nav.filosofia")}
           </button>
           <button
             onClick={() => scrollToSection("servicios")}
-            className={`transition-colors cursor-pointer ${
-              isScrolled ? "text-zinc-600 hover:text-accent" : "text-white/80 hover:text-accent"
+            className={`transition-colors cursor-pointer hover:text-[#00A3A3] ${
+              isScrolled ? "text-[#4A4A4A]" : "text-white/90"
             }`}
           >
             {t("nav.servicios")}
           </button>
           <button
             onClick={() => scrollToSection("portfolio")}
-            className={`transition-colors cursor-pointer ${
-              isScrolled ? "text-zinc-600 hover:text-accent" : "text-white/80 hover:text-accent"
+            className={`transition-colors cursor-pointer hover:text-[#00A3A3] ${
+              isScrolled ? "text-[#4A4A4A]" : "text-white/90"
             }`}
           >
             {t("nav.portfolio")}
           </button>
           <button
             onClick={() => window.dispatchEvent(new CustomEvent("open-ai-chat"))}
-            className="text-accent hover:opacity-80 transition-opacity cursor-pointer flex items-center gap-1.5 font-bold"
+            className="text-[#00A3A3] hover:text-[#006666] transition-colors cursor-pointer flex items-center gap-1.5 font-bold"
           >
-            <Compass className="w-3.5 h-3.5 animate-spin-slow" />
+            <Compass className="w-3.5 h-3.5 animate-spin-slow text-[#00A3A3]" />
             {t("nav.planner")}
           </button>
           <button
             onClick={() => scrollToSection("contacto")}
-            className={`transition-all duration-300 px-6 py-2 border text-[10px] font-bold uppercase tracking-widest rounded-sm cursor-pointer ${
+            className={`transition-all duration-300 px-6 py-2.5 border text-xs font-bold uppercase tracking-widest rounded-xs cursor-pointer ${
               isScrolled
-                ? "border-zinc-900/10 hover:bg-accent hover:text-white hover:border-accent text-zinc-900"
-                : "border-white/20 hover:bg-accent hover:text-white hover:border-accent text-white"
+                ? "border-[#00A3A3] text-[#00A3A3] hover:bg-[#00A3A3] hover:text-white"
+                : "border-white/30 text-white hover:bg-[#00A3A3] hover:border-[#00A3A3] hover:text-white"
             }`}
           >
             {t("nav.contacto")}
@@ -102,7 +102,7 @@ export default function Navbar() {
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className={`focus:outline-none transition-colors cursor-pointer p-1 ${
-              isScrolled ? "text-zinc-950" : "text-white"
+              isScrolled ? "text-[#4A4A4A]" : "text-white"
             }`}
             aria-label="Toggle menu"
           >
@@ -113,22 +113,22 @@ export default function Navbar() {
 
       {/* MOBILE MENU */}
       {isMobileMenuOpen && (
-        <div className="md:hidden fixed top-[73px] left-0 w-full bg-white border-b border-zinc-150 py-8 px-8 flex flex-col space-y-5 animate-fadeIn z-40 shadow-xl text-zinc-950">
+        <div className="md:hidden fixed top-[73px] left-0 w-full bg-white border-b border-zinc-200 py-8 px-8 flex flex-col space-y-5 animate-fadeIn z-40 shadow-xl text-[#4A4A4A] font-sans">
           <button
             onClick={() => scrollToSection("filosofia")}
-            className="text-left text-xs uppercase tracking-[0.3em] font-semibold text-zinc-700 hover:text-accent"
+            className="text-left text-xs uppercase tracking-[0.2em] font-semibold text-[#4A4A4A] hover:text-[#00A3A3]"
           >
             {t("nav.filosofia")}
           </button>
           <button
             onClick={() => scrollToSection("servicios")}
-            className="text-left text-xs uppercase tracking-[0.3em] font-semibold text-zinc-700 hover:text-accent"
+            className="text-left text-xs uppercase tracking-[0.2em] font-semibold text-[#4A4A4A] hover:text-[#00A3A3]"
           >
             {t("nav.servicios")}
           </button>
           <button
             onClick={() => scrollToSection("portfolio")}
-            className="text-left text-xs uppercase tracking-[0.3em] font-semibold text-zinc-700 hover:text-accent"
+            className="text-left text-xs uppercase tracking-[0.2em] font-semibold text-[#4A4A4A] hover:text-[#00A3A3]"
           >
             {t("nav.portfolio")}
           </button>
@@ -137,14 +137,14 @@ export default function Navbar() {
               setIsMobileMenuOpen(false);
               window.dispatchEvent(new CustomEvent("open-ai-chat"));
             }}
-            className="text-left text-xs uppercase tracking-[0.3em] font-bold text-accent flex items-center gap-2"
+            className="text-left text-xs uppercase tracking-[0.2em] font-bold text-[#00A3A3] flex items-center gap-2"
           >
             <Compass className="w-4 h-4 animate-spin-slow" />
             {t("nav.planner")}
           </button>
           <button
             onClick={() => scrollToSection("contacto")}
-            className="text-center bg-accent text-white py-3 px-6 text-xs font-bold uppercase tracking-widest"
+            className="text-center bg-[#00A3A3] hover:bg-[#006666] text-white py-3 px-6 text-xs font-bold uppercase tracking-widest rounded-xs transition-colors"
           >
             {t("nav.contacto")}
           </button>

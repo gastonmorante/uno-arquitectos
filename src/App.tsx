@@ -13,7 +13,6 @@ export default function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simulamos un tiempo de carga elegante para la inicialización
     const timer = setTimeout(() => {
       setLoading(false);
     }, 2800);
@@ -26,7 +25,7 @@ export default function App() {
       {loading ? (
         <Preloader />
       ) : (
-        <div id="app-root" className="min-h-screen bg-slate-950 text-slate-100 selection:bg-teal-500 selection:text-slate-950 transition-colors duration-300">
+        <div id="app-root" className="min-h-screen bg-white text-[#4A4A4A] selection:bg-[#00A3A3] selection:text-white font-sans transition-colors duration-300">
           <Navbar />
           <main id="main-content">
             <section id="inicio">
@@ -48,9 +47,17 @@ export default function App() {
               <Contacto />
             </section>
           </main>
-          <footer id="main-footer" className="bg-slate-950 border-t border-slate-900/50 py-8 text-center text-xs text-slate-500 font-mono">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <p>© {new Date().getFullYear()} UNO Arquitectos Mx. Todos los derechos reservados.</p>
+          <footer id="main-footer" className="bg-[#0a0a0a] border-t border-zinc-800 py-10 text-center text-xs text-zinc-400 font-sans">
+            <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+              <p className="font-normal text-zinc-400">
+                © {new Date().getFullYear()} <span className="font-semibold text-white">UNO Arquitectos</span>. Todos los derechos reservados.
+              </p>
+              <div className="flex gap-6 text-xs text-zinc-400">
+                <a href="#filosofia" className="hover:text-[#00A3A3] transition-colors">Filosofía</a>
+                <a href="#servicios" className="hover:text-[#00A3A3] transition-colors">Servicios</a>
+                <a href="#portfolio" className="hover:text-[#00A3A3] transition-colors">Portafolio</a>
+                <a href="#contacto" className="hover:text-[#00A3A3] transition-colors">Contacto</a>
+              </div>
             </div>
           </footer>
         </div>

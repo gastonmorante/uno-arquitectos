@@ -26,12 +26,12 @@ export default function Preloader() {
         <motion.div
           exit={{ opacity: 0 }}
           transition={{ duration: 0.8, ease: "easeInOut" }}
-          className="fixed inset-0 bg-[#0a0a0a] z-50 flex flex-col justify-center items-center"
+          className="fixed inset-0 bg-[#0a0a0a] z-50 flex flex-col justify-center items-center font-sans"
         >
           {/* GEOMETRIC UNO APERTURE ANIMATION */}
           <div className="relative mb-12 flex items-center justify-center">
             {/* Pulsing Backlight */}
-            <div className="absolute w-32 h-32 rounded-full bg-[#0B9488]/5 blur-xl animate-pulse"></div>
+            <div className="absolute w-32 h-32 rounded-full bg-[#00A3A3]/10 blur-xl animate-pulse"></div>
 
             <svg
               width="100"
@@ -44,49 +44,50 @@ export default function Preloader() {
               {/* SEGMENT 1 - TOP LEFT */}
               <motion.path
                 d="M 100 20 L 30.72 60 L 30.72 140 L 69.69 117.5 L 69.69 82.5 L 100 65 Z"
-                fill="#0B9488"
+                fill="#00A3A3"
                 initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 0.9, scale: 1 }}
+                animate={{ opacity: 0.95, scale: 1 }}
                 transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
               />
 
               {/* SEGMENT 2 - TOP RIGHT */}
               <motion.path
                 d="M 100 20 L 169.28 60 L 169.28 140 L 130.31 117.5 L 130.31 82.5 L 100 65 Z"
-                fill="#0B9488"
+                fill="#00A3A3"
                 initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 0.4, scale: 1 }}
+                animate={{ opacity: 0.5, scale: 1 }}
                 transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
               />
 
               {/* SEGMENT 3 - BOTTOM */}
               <motion.path
                 d="M 30.72 140 L 100 180 L 169.28 140 L 130.31 117.5 L 100 135 L 69.69 117.5 Z"
-                fill="#0B9488"
+                fill="#00A3A3"
                 initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 0.75, scale: 1 }}
+                animate={{ opacity: 0.8, scale: 1 }}
                 transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}
               />
             </svg>
           </div>
 
           {/* LOAD STATUS INDICATOR */}
-          <div className="text-center font-mono">
-            <h2 className="text-white text-xs tracking-[0.6em] font-light uppercase mb-2">
-              UNO ARQUITECTOS
+          <div className="text-center font-sans">
+            <h2 className="text-white text-sm tracking-[0.5em] uppercase mb-2">
+              <span className="font-semibold text-white">UNO</span>{" "}
+              <span className="font-light text-zinc-400">ARQUITECTOS</span>
             </h2>
-            <div className="flex items-center justify-center gap-1.5 text-[10px] text-zinc-500 tracking-widest font-bold">
+            <div className="flex items-center justify-center gap-2 text-xs font-medium text-zinc-400 tracking-widest">
               <span>{Math.min(percent, 100)}%</span>
-              <span className="text-[#0B9488]/60">•</span>
-              <span className="uppercase text-[8px] tracking-[0.2em]">
-                {percent < 40 ? "Initializing engine..." : percent < 80 ? "Structuring blueprints..." : "Rendering environments..."}
+              <span className="text-[#00A3A3]">•</span>
+              <span className="uppercase text-[10px] tracking-[0.25em] text-zinc-400 font-light">
+                {percent < 40 ? "Cargando proyecto..." : percent < 80 ? "Procesando ingeniería..." : "Renderizando espacio..."}
               </span>
             </div>
 
             {/* Micro loading track */}
-            <div className="w-40 h-[1px] bg-zinc-900 mx-auto mt-4 overflow-hidden relative">
+            <div className="w-48 h-[2px] bg-zinc-800 mx-auto mt-4 overflow-hidden relative rounded-full">
               <motion.div
-                className="h-full bg-[#0B9488]"
+                className="h-full bg-[#00A3A3]"
                 style={{ width: `${Math.min(percent, 100)}%` }}
                 transition={{ ease: "easeOut" }}
               />
