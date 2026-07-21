@@ -20,21 +20,21 @@ export default function LanguageSelector({ isScrolled, theme = "adaptive" }: Lan
   ];
 
   const isDarkText = theme === "adaptive" && isScrolled;
-  const textColor = isDarkText ? "text-zinc-700 hover:text-zinc-950" : "text-white/80 hover:text-white";
-  const borderColor = isDarkText ? "border-zinc-200" : "border-white/10";
+  const textColor = isDarkText ? "text-[#4A4A4A] hover:text-[#0a0a0a]" : "text-white/80 hover:text-white";
+  const borderColor = isDarkText ? "border-zinc-200" : "border-white/20";
 
   return (
-    <div className="relative font-mono text-[10px] tracking-widest uppercase">
+    <div className="relative font-sans text-xs tracking-wider uppercase">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className={`flex items-center gap-1.5 px-2.5 py-1.5 border rounded-sm transition-all duration-300 cursor-pointer ${borderColor} ${textColor}`}
+        className={`flex items-center gap-1.5 px-2.5 py-1.5 border rounded-xs transition-all duration-300 cursor-pointer ${borderColor} ${textColor}`}
       >
-        <Globe className="w-3.5 h-3.5 text-[#0B9488]" />
-        <span>{language}</span>
+        <Globe className="w-3.5 h-3.5 text-[#00A3A3]" />
+        <span className="font-semibold">{language}</span>
       </button>
 
       {isOpen && (
-        <div className="absolute left-0 mt-1.5 bg-slate-950 border border-slate-900 rounded-sm py-1.5 min-w-[70px] shadow-2xl z-50 text-left">
+        <div className="absolute left-0 mt-1.5 bg-[#0a0a0a] border border-zinc-800 rounded-xs py-1.5 min-w-[70px] shadow-xl z-50 text-left font-sans">
           {languages.map((l) => (
             <button
               key={l.id}
@@ -42,8 +42,8 @@ export default function LanguageSelector({ isScrolled, theme = "adaptive" }: Lan
                 setLanguage(l.id);
                 setIsOpen(false);
               }}
-              className={`block w-full px-4 py-1.5 text-[9px] font-mono text-left hover:bg-slate-900 transition-colors ${
-                language === l.id ? "text-[#0B9488] font-bold" : "text-zinc-400"
+              className={`block w-full px-4 py-1.5 text-xs text-left hover:bg-zinc-800 transition-colors ${
+                language === l.id ? "text-[#00A3A3] font-semibold" : "text-zinc-400"
               }`}
             >
               {l.label}
