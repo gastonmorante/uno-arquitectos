@@ -8,8 +8,8 @@ export const projects: Project[] = [
       en: "Villa Chukum"
     },
     category: {
-      es: "Residencial de Lujo",
-      en: "Luxury Residential"
+      es: "Residencial Boutique",
+      en: "Boutique Residential"
     },
     location: {
       es: "Selva Alta, Tulum, México",
@@ -19,19 +19,19 @@ export const projects: Project[] = [
     area: "650 m²",
     image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
     description: {
-      es: "Un santuario brutalista esculpido entre el follaje de la selva maya. Muros monolíticos de concreto enriquecidos con Chukum ancestral y terrazas suspendidas para una ventilación pasiva absoluta.",
-      en: "A brutalist sanctuary sculpted into the Mayan jungle foliage. Monolithic concrete walls enriched with ancestral Chukum and suspended terraces for absolute passive ventilation."
+      es: "Residencia boutique esculpida entre la selva de Tulum. Muros monolíticos de concreto aparente enriquecidos con acabado continuo de Chukum natural y terrazas orientadas para ventilación pasiva.",
+      en: "Boutique residence sculpted into the Tulum jungle. Monolithic exposed concrete walls enriched with continuous natural Chukum plaster and terraces oriented for passive cross-ventilation."
     },
     details: {
       es: [
-        { label: "Estructura", value: "Concreto monolítico con Chukum natural" },
-        { label: "Interiores", value: "Madera noble de Tzalam y Mármol Travertino" },
-        { label: "Sustentabilidad", value: "Captación pluvial y climatización bioclimática" }
+        { label: "Estructura", value: "Concreto aparente monolítico con acabado Chukum" },
+        { label: "Materiales", value: "Madera noble de Tzalam certificada y piedra regional" },
+        { label: "Criterio Bioclimático", value: "Captación pluvial y climatización pasiva" }
       ],
       en: [
-        { label: "Structure", value: "Monolithic concrete with natural Chukum" },
-        { label: "Interiors", value: "Tzalam hardwood and Travertine Marble" },
-        { label: "Sustainability", value: "Rainwater harvesting and bioclimatic comfort" }
+        { label: "Structure", value: "Monolithic exposed concrete with Chukum finish" },
+        { label: "Materials", value: "Certified Tzalam hardwood and regional stone" },
+        { label: "Bioclimatic Standard", value: "Rainwater harvesting and passive climate control" }
       ]
     },
     gallery: {
@@ -49,30 +49,30 @@ export const projects: Project[] = [
       en: "Coral House"
     },
     category: {
-      es: "Residencial de Lujo",
-      en: "Luxury Residential"
+      es: "Residencial Boutique",
+      en: "Boutique Residential"
     },
     location: {
-      es: "Zona Hotelera, Cancún, México",
-      en: "Hotel Zone, Cancun, Mexico"
+      es: "Zona Costera, Cancún, México",
+      en: "Coastal Zone, Cancun, Mexico"
     },
     year: "2025",
     area: "920 m²",
     image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1600&q=80",
     description: {
-      es: "Una joya escultórica frente al mar Caribe. Estructuras de alta ingeniería que desafían tormentas tropicales mediante grandes volados y muros de cristal templado low-E anti-huracán.",
-      en: "A sculptural jewel facing the Caribbean Sea. High-engineering structures designed to withstand tropical storms through large cantilevers and low-E tempered hurricane-proof glass."
+      es: "Residencia marina frente al Caribe Mexicano. Alta ingeniería sismorresistente con cimentación profunda de pilotes sobre suelo kárstico y cancelería estructural anti-huracán.",
+      en: "Oceanfront coastal residence in the Mexican Caribbean. Seismic engineering featuring deep piling foundations over karstic subsoil and hurricane-rated structural glazing."
     },
     details: {
       es: [
-        { label: "Estructura", value: "Cimentación profunda de pilotes antisísmicos" },
-        { label: "Fachada", value: "Cristal templado low-E y aluminio estructural marino" },
-        { label: "Sustentabilidad", value: "Paneles solares flotantes y domótica inteligente" }
+        { label: "Cimentación", value: "Pilotes profundos de concreto armado sismorresistente" },
+        { label: "Fachada", value: "Cancelería marina y cristal templado low-E anti-huracán" },
+        { label: "Eficiencia", value: "Energía solar integrada y domótica pasiva" }
       ],
       en: [
-        { label: "Structure", value: "Deep anti-seismic piling foundations" },
-        { label: "Facade", value: "Low-E tempered glass and marine structural aluminum" },
-        { label: "Sustainability", value: "Floating solar panels and smart automation" }
+        { label: "Foundation", value: "Deep earthquake-resistant reinforced concrete piles" },
+        { label: "Facade", value: "Marine-grade glazing and low-E hurricane-proof glass" },
+        { label: "Efficiency", value: "Integrated solar energy and passive automation" }
       ]
     },
     gallery: {
@@ -90,8 +90,8 @@ export const projects: Project[] = [
       en: "Tzalam House"
     },
     category: {
-      es: "Residencial de Lujo",
-      en: "Luxury Residential"
+      es: "Residencial Boutique",
+      en: "Boutique Residential"
     },
     location: {
       es: "Playacar, Playa del Carmen, México",
@@ -101,19 +101,19 @@ export const projects: Project[] = [
     area: "780 m²",
     image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1600&q=80",
     description: {
-      es: "Residencia orgánica que equilibra la monumentalidad del concreto aparente con la calidez del Tzalam noble certificado. Diseñada en torno a un patio central de agua.",
-      en: "Organic residence balancing the monumentality of exposed concrete with the warmth of certified Tzalam hardwood. Designed around a central water courtyard."
+      es: "Proyecto residencial que equilibra volúmenes monolíticos de concreto aparente con la calidez de la madera de Tzalam y Parota certificada. Proyectada en torno a un patio de agua.",
+      en: "Residential project balancing monolithic exposed concrete volumes with the warmth of certified local Tzalam and Parota hardwoods. Designed around a water courtyard."
     },
     details: {
       es: [
-        { label: "Estructura", value: "Concreto aparente entablado texturizado" },
-        { label: "Carpintería", value: "Madera de Tzalam y Parota maciza curada" },
-        { label: "Sustentabilidad", value: "Reciclaje total de aguas grises y confort pasivo" }
+        { label: "Estructura", value: "Concreto aparente entablado texturizado artesanal" },
+        { label: "Carpintería", value: "Madera de Tzalam y Parota maciza certificada" },
+        { label: "Sustentabilidad", value: "Reutilización hídrica y ventilación bioclimática" }
       ],
       en: [
-        { label: "Structure", value: "Textured board-formed exposed concrete" },
-        { label: "Carpentry", value: "Cured solid Tzalam and Parota wood" },
-        { label: "Sustainability", value: "Greywater recycling and passive comfort" }
+        { label: "Structure", value: "Artisanal board-formed exposed concrete" },
+        { label: "Carpentry", value: "Certified solid Tzalam and Parota hardwood" },
+        { label: "Sustainability", value: "Water reuse and passive bioclimatic ventilation" }
       ]
     },
     gallery: {
@@ -126,7 +126,6 @@ export const projects: Project[] = [
   }
 ];
 
-// Mapped compatibility layout for Portfolio.tsx component consumption
 export const portfolioItems = projects.map((p) => {
   return {
     id: p.id,
