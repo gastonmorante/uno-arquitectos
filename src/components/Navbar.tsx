@@ -79,6 +79,14 @@ export default function Navbar() {
             {t("nav.portfolio")}
           </button>
           <button
+            onClick={() => scrollToSection("faqs")}
+            className={`transition-colors cursor-pointer hover:text-[#00A3A3] ${
+              isScrolled ? "text-[#4A4A4A]" : "text-white/90"
+            }`}
+          >
+            {t("nav.faqs")}
+          </button>
+          <button
             onClick={() => window.dispatchEvent(new CustomEvent("open-ai-chat"))}
             className="text-[#00A3A3] hover:text-[#006666] transition-colors cursor-pointer flex items-center gap-1.5 font-bold"
           >
@@ -131,6 +139,12 @@ export default function Navbar() {
             className="text-left text-xs uppercase tracking-[0.2em] font-semibold text-[#4A4A4A] hover:text-[#00A3A3]"
           >
             {t("nav.portfolio")}
+          </button>
+          <button
+            onClick={() => scrollToSection("faqs")}
+            className="text-left text-xs uppercase tracking-[0.2em] font-semibold text-[#4A4A4A] hover:text-[#00A3A3]"
+          >
+            {t("nav.faqs")}
           </button>
           <button
             onClick={() => {
