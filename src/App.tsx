@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Filosofia from './components/Filosofia';
+import Metrics from './components/Metrics';
 import Servicios from './components/Servicios';
 import Portfolio from './components/Portfolio';
 import AIConsultant from './components/AIConsultant';
@@ -34,6 +35,7 @@ export default function App() {
             <section id="filosofia">
               <Filosofia />
             </section>
+            <Metrics />
             <section id="servicios">
               <Servicios />
             </section>
