@@ -33,7 +33,7 @@ const transporter = nodemailer.createTransport({
 // 1. Endpoint para el Consultor de IA de UNO Arquitectos
 app.post("/api/chat", async (req, res) => {
   try {
-    const { messages, userProfile } = req.body;
+    const { messages, userProfile, language } = req.body;
     
     if (!messages || !Array.isArray(messages)) {
       return res.status(400).json({ error: "Mensajes no válidos" });
@@ -47,22 +47,26 @@ FILOSOFÍA Y REGLAS INSTITUCIONALES (GUÍA DE MARCA V2.2):
 - Propósito Oficial (Nivel 0): "Materializamos espacios que suman — a quien los habita, a quien los construye, al lugar que los recibe y a la comunidad que los rodea."
 - Tagline de Identidad (Nivel 1): "Arquitectura que pertenece. Espacios que perduran."
 - Tagline de Conversión (Nivel 2): "Diseño con sentido. Construcción con criterio."
-- Tono y Voz: "Tu proyecto puede hacerse. Te decimos cómo y cuánto." Hablas de forma clara, directa, humana y honesta. Sin lenguaje corporativo inflado ni frases cliché (NUNCA digas "hacemos tus sueños realidad", "los mejores arquitectos" ni "lujo a tu alcance").
+- Declaración (Nivel 3): "Somos el estudio que diseña lo que puedes construir."
+- Tono y Voz: "Tu proyecto puede hacerse. Te decimos cómo y cuánto." Hablas de forma extremadamente sofisticada, pulcra, técnica, poética y cercana. Sin lenguaje corporativo inflado ni clichés comerciales (NUNCA digas "hacemos tus sueños realidad", "los mejores arquitectos" ni "lujo inalcanzable").
 - Modelo de Trabajo: Servicio integral bajo un solo techo — diseño, gestión y ejecución —, enfocado en proyectos residenciales boutique y hospitality en el rango de $3M a $10M MXN.
 - Transparencia Total: Presupuestos paramétricos claros desde el primer día, sin cargos ocultos ni sorpresas técnicas.
 
-CAPACIDAD Y CRITERIO TÉCNICO:
-- Ingegneria de Suelo Kárstico: Cimentaciones con pilotes profundos de concreto armado para suelos con cenotes y ríos subterráneos.
-- Bioclimática y Materialidad: Acabados continuos de Chukum natural, maderas macizas certificadas (Tzalam y Parota) y concreto aparente.
-- Viabilidad Legal & Permisos: Gestión de licencias de construcción municipales, Manifestación de Impacto Ambiental (MIA), fusiones y normativas COS/CUS en Quintana Roo.
+REGLA ESTRICTA DE PRECIOS (NO COTIZAR COSTOS FIJOS NI PRECIOS POR M²):
+- Tienes estrictamente prohibido dar estimaciones de costos fijos, cotizaciones exactas o precios específicos por m² en el chat (por ejemplo, NUNCA digas "$1,500 USD por m²" ni "el proyecto costará exactamente $5,000,000 MXN").
+- Si un usuario pregunta "¿Cuánto cuesta construir?", "Dame un precio por m²" o "¿Cuál es el presupuesto?", responde con elegancia explicando que en UNO Arquitectos cada residencia boutique es una obra única diseñada a la medida. Explica que los presupuestos paramétricos se determinan con precisión técnica tras evaluar la mecánica del suelo kárstico, el programa de diseño y la selección de materiales autóctonos. Invítalos cordialmente a agendar una reunión técnica presencial o llamada directa con la dirección de obra.
+
+EXPERTISE TÉCNICO EN RIVIERA MAYA:
+- Materialidad Autóctona: Acabados artesanales continuos de Chukum natural, maderas macizas certificadas de Tzalam y Parota, concreto aparente entablado lavable, piedra Galarza y sascab.
+- Alta Ingeniería Estructural: Cimentaciones con pilotes profundos de concreto armado e ingeniería geotécnica sismorresistente sobre suelo kárstico con cenotes o ríos subterráneos. Estructuras preparadas para tormentas y huracanes categoría 5.
+- Normativas Ecológicas: Cumplimiento riguroso de COS, CUS, Manifestación de Impacto Ambiental (MIA), licencias municipales de construcción y conservación del 50-60% de vegetación autóctona.
 
 GUÍA DE INTERACCIÓN:
-- Responde con sobriedad, precisión técnica y calidez.
-- Invita sutilmente al usuario a agendar una cita técnica presencial en el showroom de Tulum u oficina de Polanco CDMX, o contactar directamente por WhatsApp.
-- Responde siempre en el idioma en el que te escriba el usuario (Español, Inglés, Italiano, Francés).
+- Responde con solidez técnica, lenguaje exquisito y calidez humana.
+- Idioma activo seleccionado: ${language || 'es'}. Responde siempre en el idioma que te hable el usuario (Español, Inglés, Italiano, Francés).
 
 INFORMACIÓN DEL USUARIO:
-${userProfile ? JSON.stringify(userProfile, null, 2) : "Usuario en consulta previa."}
+${userProfile ? JSON.stringify(userProfile, null, 2) : "Usuario en consulta activa."}
 `;
 
     const formattedContents = messages.map((m) => ({
@@ -75,13 +79,13 @@ ${userProfile ? JSON.stringify(userProfile, null, 2) : "Usuario en consulta prev
       contents: formattedContents,
       config: {
         systemInstruction,
-        temperature: 0.5,
+        temperature: 0.4,
         maxOutputTokens: 1000,
       }
     });
 
     const replyText = response.text || "Disculpe, he experimentado una breve pausa. ¿Podría repetir su consulta técnica?";
-    return res.json({ response: replyText });
+    return res.json({ text: replyText });
 
   } catch (error: any) {
     console.error("Error en API de Chat:", error);
@@ -101,6 +105,7 @@ app.post("/api/advisor", async (req, res) => {
     Analyze the user's lot or project requirements and generate a realistic, buildable architectural proposal in JSON format.
     Language: ${language === 'en' ? 'English' : 'Spanish'}.
     Follow Brand Guide v2.2: "Architecture that belongs. Spaces that endure." Focus on real costs, native materials (Chukum, Tzalam), and karstic foundation engineering.
+    Do NOT output fixed quotes or per-sqm rates in chat text.
     Schema:
     {
       "projectTitle": "Tailored project name",
@@ -133,7 +138,7 @@ app.post("/api/advisor", async (req, res) => {
   }
 });
 
-// 3. Endpoint de Leads
+// 3. Endpoint de Leads (Integración CRM GHL Webhooks)
 app.post("/api/leads", async (req, res) => {
   try {
     const { name, email, phone, message, source } = req.body;
@@ -148,12 +153,12 @@ app.post("/api/leads", async (req, res) => {
       email,
       phone: phone || "",
       message: message || "",
-      source: source || "Desconocido",
+      source: source || "Asesor AI Chatbot",
       createdAt: new Date()
     };
 
     leads.push(newLead);
-    console.log("[Leads DB] Nuevo lead registrado:", newLead);
+    console.log("[Leads DB] Nuevo lead registrado exitosamente:", newLead);
 
     const crmWebhook = process.env.GHL_WEBHOOK_URL;
     if (crmWebhook) {
@@ -163,10 +168,12 @@ app.post("/api/leads", async (req, res) => {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(newLead)
         });
-        console.log("[Leads CRM] Lead reenviado al Webhook exitosamente.");
+        console.log("[Leads CRM] Lead reenviado a GHL Webhook exitosamente.");
       } catch (err: any) {
-        console.error("[Leads CRM] Error al reenviar al webhook:", err.message);
+        console.error("[Leads CRM] Error al reenviar al webhook GHL:", err.message);
       }
+    } else {
+      console.log("[Leads CRM] Variable GHL_WEBHOOK_URL no configurada. Lead almacenado en memoria local de Node de forma segura.");
     }
 
     res.json({ success: true, lead: newLead });

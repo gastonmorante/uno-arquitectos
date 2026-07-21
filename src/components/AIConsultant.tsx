@@ -8,7 +8,7 @@ import {
   Bot,
   MessageCircle
 } from "lucide-react";
-import { useLanguage } from "../context/LanguageContext";
+import { useLanguage, Language } from "../context/LanguageContext";
 
 interface ChatMessage {
   role: "user" | "assistant";
@@ -51,6 +51,58 @@ const renderUnoIcon = (size: number, className = "") => (
   </svg>
 );
 
+const GET_GREETING_MSG = (lang: Language) => {
+  switch (lang) {
+    case "en":
+      return "Welcome to UNO Arquitectos. I am your AI Architecture & Engineering Advisor.\n\nTo provide you with personalized service, please share your **Full Name**:";
+    case "it":
+      return "Benvenuto su UNO Arquitectos. Sono il suo Consulente AI di Architettura e Ingegneria.\n\nPer offrirle un'attenzione personalizzata, la prego di condividere il suo **Nome Completo**:";
+    case "fr":
+      return "Bienvenue chez UNO Arquitectos. Je suis votre Conseiller IA en Architecture et Ingénierie.\n\nPour un service personnalisé, veuillez me transmettre votre **Nom Complet** :";
+    default:
+      return "Bienvenido a la consulta de UNO Arquitectos. Soy su Asesor de Arquitectura e Ingeniería AI.\n\nPara brindarle atención personalizada, por favor compártame su **Nombre Completo**:";
+  }
+};
+
+const GET_EMAIL_REQUEST_MSG = (lang: Language, name: string) => {
+  switch (lang) {
+    case "en":
+      return `Thank you, **${name}**. Could you please provide your **Email Address** to connect your inquiry session?`;
+    case "it":
+      return `Grazie, **${name}**. Potrebbe fornirmi il suo **Indirizzo Email** per collegare la sua sessione?`;
+    case "fr":
+      return `Merci, **${name}**. Pourriez-vous me fournir votre **Adresse E-mail** pour connecter votre session ?`;
+    default:
+      return `Gracias, **${name}**. ¿Me proporcionaría su **Correo Electrónico** para vincular su consulta?`;
+  }
+};
+
+const GET_INVALID_EMAIL_MSG = (lang: Language) => {
+  switch (lang) {
+    case "en":
+      return "Please enter a valid email address (e.g., name@domain.com):";
+    case "it":
+      return "Per favore, inserisca un indirizzo email valido (es. nome@dominio.com):";
+    case "fr":
+      return "Veuillez saisir une adresse e-mail valide (ex. nom@domaine.com) :";
+    default:
+      return "Por favor, ingrese un correo electrónico válido (ejemplo@correo.com):";
+  }
+};
+
+const GET_ONBOARDING_COMPLETE_MSG = (lang: Language, name: string) => {
+  switch (lang) {
+    case "en":
+      return `Great, **${name}**! Your inquiry session is active.\n\nWhat topic can I assist you with today regarding local regulations, materials (Chukum, Tzalam), or karstic soil engineering?`;
+    case "it":
+      return `Perfetto, **${name}**! La sua sessione è attiva.\n\nSu quale argomento posso assisterla oggi riguardante normative, materiali (Chukum, Tzalam) o ingegneria del terreno carsico?`;
+    case "fr":
+      return `Parfait, **${name}** ! Votre session de consultation est active.\n\nSur quel sujet puis-je vous assister aujourd'hui concernant les normes, matériaux (Chukum, Tzalam) ou ingénierie du sol karstique ?`;
+    default:
+      return `¡Excelente, **${name}**! Su consulta está abierta.\n\n¿En qué tema puedo asesorarle hoy sobre normativas, materiales autóctonos (Chukum, Tzalam) o ingeniería en suelo kárstico?`;
+  }
+};
+
 export default function AIConsultant() {
   const { language } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
@@ -64,7 +116,7 @@ export default function AIConsultant() {
   const [leadName, setLeadName] = useState("");
   const [leadEmail, setLeadEmail] = useState("");
 
-  // Cursor tracking motion variables
+  // Cursor tracking motion variables with smooth physics
   const bgLogoX = useMotionValue(typeof window !== "undefined" ? window.innerWidth / 2 - 100 : 200);
   const bgLogoY = useMotionValue(typeof window !== "undefined" ? window.innerHeight / 2 - 100 : 200);
   
@@ -75,6 +127,8 @@ export default function AIConsultant() {
   const timeoutRef = useRef<any>(null);
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
+
     bgLogoX.set(window.innerWidth / 2 - 100);
     bgLogoY.set(window.innerHeight / 2 - 100);
 
@@ -114,17 +168,12 @@ export default function AIConsultant() {
     };
   }, [bgLogoX, bgLogoY]);
 
-  // Initialize first greeting message depending on selected language
+  // Reset/Initialize greeting when language changes
   useEffect(() => {
-    const greetingMsg =
-      language === "es"
-        ? "Bienvenido a la consulta de UNO Arquitectos. Soy su Asesor de Arquitectura e Ingeniería AI.\n\nPara brindarle atención personalizada, por favor compártame su **Nombre Completo**:"
-        : "Welcome to UNO Arquitectos. I am your AI Architecture & Engineering Advisor.\n\nTo give you personalized service, please share your **Full Name**:";
-
     setMessages([
       {
         role: "assistant",
-        content: greetingMsg,
+        content: GET_GREETING_MSG(language),
         timestamp: new Date()
       }
     ]);
@@ -134,7 +183,7 @@ export default function AIConsultant() {
     setLeadEmail("");
   }, [language]);
 
-  // Listen to open-ai-chat custom event
+  // Listen to custom open-ai-chat event
   useEffect(() => {
     const handleOpenChat = () => {
       setIsOpen(true);
@@ -143,7 +192,7 @@ export default function AIConsultant() {
     return () => window.removeEventListener("open-ai-chat", handleOpenChat);
   }, []);
 
-  // Scroll to bottom on new messages
+  // Scroll to bottom on message updates
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, isLoading]);
@@ -162,11 +211,12 @@ export default function AIConsultant() {
         ];
 
   const handleSendMessage = async (text: string) => {
-    if (!text.trim() || isLoading) return;
+    const trimmedText = text.trim();
+    if (!trimmedText || isLoading) return;
 
     const userMsg: ChatMessage = {
       role: "user",
-      content: text,
+      content: trimmedText,
       timestamp: new Date()
     };
 
@@ -174,57 +224,46 @@ export default function AIConsultant() {
     setInputValue("");
     setIsLoading(true);
 
-    // STEP 1: CAPTURE NAME
+    // PILLAR 1: ONBOARDING FASE 1 - NOMBRE COMPLETO
     if (onboardingStep === "name") {
-      const nameVal = text.trim();
-      setLeadName(nameVal);
+      setLeadName(trimmedText);
       setOnboardingStep("email");
       setIsLoading(false);
 
       setTimeout(() => {
-        const nextPrompt =
-          language === "es"
-            ? `Gracias, **${nameVal}**. ¿Me proporcionaría su **Correo Electrónico** para vincular su consulta?`
-            : `Thank you, **${nameVal}**. Could you please provide your **Email Address** to connect your inquiry?`;
-
         setMessages((prev) => [
           ...prev,
           {
             role: "assistant",
-            content: nextPrompt,
+            content: GET_EMAIL_REQUEST_MSG(language, trimmedText),
             timestamp: new Date()
           }
         ]);
-      }, 600);
+      }, 500);
       return;
     }
 
-    // STEP 2: CAPTURE EMAIL & SUBMIT LEAD
+    // PILLAR 1: ONBOARDING FASE 2 - EMAIL & VALIDACIÓN REGEX
     if (onboardingStep === "email") {
-      const emailVal = text.trim();
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(emailVal)) {
+      if (!emailRegex.test(trimmedText)) {
         setIsLoading(false);
-        const errorPrompt =
-          language === "es"
-            ? "Por favor, ingrese un correo electrónico válido (ejemplo@correo.com):"
-            : "Please enter a valid email address (example@domain.com):";
-
+        // Responde mensaje de error elegante sin alterar el estado onboardingStep ('email')
         setMessages((prev) => [
           ...prev,
           {
             role: "assistant",
-            content: errorPrompt,
+            content: GET_INVALID_EMAIL_MSG(language),
             timestamp: new Date()
           }
         ]);
         return;
       }
 
-      setLeadEmail(emailVal);
+      setLeadEmail(trimmedText);
       setOnboardingStep("completed");
 
-      // Trigger Tracking Events
+      // Analytics events
       if (typeof window !== "undefined") {
         const win = window as any;
         if (win.gtag) {
@@ -235,65 +274,69 @@ export default function AIConsultant() {
         }
       }
 
+      // PILLAR 2: ENVÍO REAL A /api/leads Y REDIRECCIÓN WHATSAPP
+      const currentName = leadName;
+      const currentEmail = trimmedText;
+
+      const waText = language === "es"
+        ? `Hola UNO Arquitectos, acabo de consultar en su Asesor AI. Mi nombre es ${currentName}, mi correo es ${currentEmail}. Me interesa recibir atención técnica personalizada.`
+        : `Hello UNO Arquitectos, I consulted your AI Advisor. My name is ${currentName}, my email is ${currentEmail}. I would like direct technical support.`;
+      
+      const waUrl = `https://wa.me/5219841234567?text=${encodeURIComponent(waText)}`;
+
+      // Safe window.open before async fetch to prevent popup blocker
+      window.open(waUrl, "_blank", "noopener,noreferrer");
+
       try {
         await fetch("/api/leads", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            name: leadName,
-            email: emailVal,
+            name: currentName,
+            email: currentEmail,
             phone: "",
-            message: "Registrado desde el Asesor AI",
+            message: "Lead registrado mediante el embudo del Asesor AI",
             source: "Asesor AI Chatbot"
           })
         });
-
-        const waText = language === "es"
-          ? `Hola UNO Arquitectos, acabo de consultar en su Asesor AI. Mi nombre es ${leadName}, mi correo es ${emailVal}. Me interesa recibir atención directa.`
-          : `Hello UNO Arquitectos, I consulted your AI Advisor. My name is ${leadName}, my email is ${emailVal}. I would like direct support.`;
-        
-        const waUrl = `https://wa.me/5219841234567?text=${encodeURIComponent(waText)}`;
-        window.open(waUrl, "_blank");
-
       } catch (err) {
-        console.error("Error submitting lead:", err);
+        console.error("Error submitting lead to API:", err);
       }
 
       setIsLoading(false);
       setTimeout(() => {
-        const welcomeCompletePrompt =
-          language === "es"
-            ? `¡Excelente, **${leadName}**! Su consulta está abierta.\n\n¿En qué tema puedo asesorarle hoy sobre normativas, materiales locales o ingeniería estructural?`
-            : `Great, **${leadName}**! Your inquiry session is active.\n\nWhat topic can I assist you with today regarding regulations, local materials, or structural engineering?`;
-
         setMessages((prev) => [
           ...prev,
           {
             role: "assistant",
-            content: welcomeCompletePrompt,
+            content: GET_ONBOARDING_COMPLETE_MSG(language, currentName),
             timestamp: new Date()
           }
         ]);
-      }, 600);
+      }, 500);
       return;
     }
 
-    // STEP 3: STANDARD AI CHAT
+    // PILLAR 3: CHAT ABIERTO CON PROMPT DEL SISTEMA Y REGLAS DE NEGOCIO
     try {
-      const nonOnboardingMessages = messages.filter((_, idx) => idx >= 4);
-      const history = [...nonOnboardingMessages, userMsg].map((m) => ({
-        sender: m.role === "user" ? "user" : "assistant",
-        text: m.content
+      const chatHistory = messages.map((m) => ({
+        role: m.role,
+        content: m.content
       }));
+      chatHistory.push({ role: "user", content: trimmedText });
 
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: history, language })
+        body: JSON.stringify({
+          messages: chatHistory,
+          language,
+          userProfile: { name: leadName, email: leadEmail }
+        })
       });
 
       if (!res.ok) {
-        throw new Error("Failed to connect to assistant.");
+        throw new Error("Respuesta no válida del servidor.");
       }
 
       const data = await res.json();
@@ -302,7 +345,7 @@ export default function AIConsultant() {
         ...prev,
         {
           role: "assistant",
-          content: data.text || "No se pudo obtener respuesta.",
+          content: data.text || data.response || "No se obtuvo respuesta.",
           timestamp: new Date()
         }
       ]);
@@ -314,8 +357,8 @@ export default function AIConsultant() {
           role: "assistant",
           content:
             language === "es"
-              ? "Servidor ocupado. Por favor contáctenos directamente por WhatsApp o formulario de contacto."
-              : "Server busy. Please contact us directly via WhatsApp or contact form.",
+              ? "Para consultas de cotización personalizada, le invitamos a agendar una cita directa con nuestros directores de obra presencialmente o por WhatsApp."
+              : "For custom quotation inquiries, we cordially invite you to schedule a technical appointment directly with our site directors or via WhatsApp.",
           timestamp: new Date()
         }
       ]);
@@ -324,9 +367,11 @@ export default function AIConsultant() {
     }
   };
 
+  // PILLAR 4: FORMATEO LIMPIO DE TEXTOS (Bolds & Bullet Points)
   const formatText = (text: string) => {
     return text.split("\n").map((line, lineIdx) => {
-      const isBullet = line.trim().startsWith("•") || line.trim().startsWith("*");
+      const trimmedLine = line.trim();
+      const isBullet = trimmedLine.startsWith("•") || trimmedLine.startsWith("*");
       let cleanLine = line;
       if (isBullet) {
         cleanLine = line.replace(/^[•*]\s*/, "");
@@ -371,7 +416,7 @@ export default function AIConsultant() {
           rel="noopener noreferrer"
           whileHover={{ scale: 1.06 }}
           whileTap={{ scale: 0.95 }}
-          className="relative bg-[#046A38] hover:bg-[#03512b] text-white p-4 rounded-full shadow-lg flex items-center justify-center cursor-pointer border border-[#046a38]/30 group"
+          className="relative bg-[#046A38] hover:bg-[#03512b] text-white p-4 rounded-full shadow-lg flex items-center justify-center cursor-pointer border border-[#046a38]/30 group min-w-[52px] min-h-[52px]"
           aria-label="WhatsApp Contact"
         >
           <MessageCircle className="w-6 h-6 text-white" />
@@ -410,7 +455,7 @@ export default function AIConsultant() {
                 </div>
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="text-zinc-400 hover:text-white transition-colors cursor-pointer p-1"
+                  className="text-zinc-400 hover:text-white transition-colors cursor-pointer p-2 min-w-[44px] min-h-[44px] flex items-center justify-center"
                   aria-label="Close chat"
                 >
                   <X className="w-4 h-4" />
@@ -470,7 +515,7 @@ export default function AIConsultant() {
               </div>
 
               {/* Quick Prompt suggestions */}
-              {onboardingStep === "completed" && messages.length <= 2 && !isLoading && (
+              {onboardingStep === "completed" && messages.length <= 4 && !isLoading && (
                 <div className="px-4 py-2 bg-[#DDDDD9]/20 border-t border-zinc-200/60">
                   <p className="text-[9px] font-semibold tracking-wider text-zinc-500 uppercase mb-2 text-left">
                     {language === "es" ? "Sugerencias de Consulta" : "Suggested Queries"}
@@ -480,7 +525,7 @@ export default function AIConsultant() {
                       <button
                         key={idx}
                         onClick={() => handleSendMessage(qp.prompt)}
-                        className="text-xs bg-white border border-zinc-300 hover:border-[#00A3A3] hover:text-[#00A3A3] text-[#4A4A4A] px-2.5 py-1.5 rounded-xs transition-all cursor-pointer text-left"
+                        className="text-xs bg-white border border-zinc-300 hover:border-[#00A3A3] hover:text-[#00A3A3] text-[#4A4A4A] px-2.5 py-1.5 rounded-xs transition-all cursor-pointer text-left min-h-[36px]"
                       >
                         {qp.label}
                       </button>
@@ -502,21 +547,23 @@ export default function AIConsultant() {
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
                   placeholder={
-                    language === "es"
-                      ? "Pregunte sobre permisos, materiales, costos..."
-                      : "Ask about permits, materials, costs..."
+                    onboardingStep === "name"
+                      ? (language === "es" ? "Escriba su Nombre Completo..." : "Enter your Full Name...")
+                      : onboardingStep === "email"
+                      ? (language === "es" ? "Escriba su Correo Electrónico..." : "Enter your Email Address...")
+                      : (language === "es" ? "Pregunte sobre permisos, materiales, estructura..." : "Ask about permits, materials, engineering...")
                   }
-                  className="flex-1 bg-zinc-50 border border-zinc-300 rounded-xs px-3.5 py-2 text-xs text-[#0a0a0a] focus:outline-none focus:border-[#00A3A3] focus:bg-white transition-all"
+                  className="flex-1 bg-zinc-50 border border-zinc-300 rounded-xs px-3.5 py-2.5 text-xs text-[#0a0a0a] focus:outline-none focus:border-[#00A3A3] focus:bg-white transition-all min-h-[44px]"
                 />
                 <button
                   type="submit"
                   disabled={isLoading || !inputValue.trim()}
-                  className={`px-3.5 bg-[#00A3A3] hover:bg-[#006666] text-white rounded-xs flex items-center justify-center transition-colors cursor-pointer ${
+                  className={`px-4 bg-[#00A3A3] hover:bg-[#006666] text-white rounded-xs flex items-center justify-center transition-colors cursor-pointer min-h-[44px] min-w-[44px] ${
                     isLoading || !inputValue.trim() ? "opacity-50 cursor-not-allowed" : ""
                   }`}
                   aria-label="Send message"
                 >
-                  <Send className="w-3.5 h-3.5" />
+                  <Send className="w-4 h-4" />
                 </button>
               </form>
             </motion.div>
@@ -528,7 +575,7 @@ export default function AIConsultant() {
           onClick={() => setIsOpen(!isOpen)}
           whileHover={{ scale: 1.06 }}
           whileTap={{ scale: 0.95 }}
-          className="bg-[#0a0a0a] hover:bg-zinc-900 border border-zinc-800 text-white p-4 rounded-full shadow-2xl flex items-center justify-center cursor-pointer group"
+          className="bg-[#0a0a0a] hover:bg-zinc-900 border border-zinc-800 text-white p-4 rounded-full shadow-2xl flex items-center justify-center cursor-pointer group min-w-[52px] min-h-[52px]"
           aria-label="Toggle AI consultant chatbot"
         >
           <Sparkles className="w-6 h-6 text-[#00A3A3] group-hover:rotate-12 transition-transform duration-300" />
@@ -547,13 +594,13 @@ export default function AIConsultant() {
       <motion.div
         style={{ x: smoothBgX, y: smoothBgY }}
         animate={{
-          color: isMoving ? "rgba(200, 200, 200, 0.15)" : "rgba(0, 163, 163, 0.22)"
+          color: isMoving ? "rgba(200, 200, 200, 0.12)" : "rgba(0, 163, 163, 0.20)"
         }}
         transition={{
           duration: 0.8,
           ease: "easeOut"
         }}
-        className="fixed top-0 left-0 pointer-events-none z-30 select-none"
+        className="fixed top-0 left-0 pointer-events-none z-30 select-none hidden sm:block"
       >
         {renderUnoIcon(200, "animate-rotate-spinning")}
       </motion.div>
