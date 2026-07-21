@@ -11,17 +11,13 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Configurar CORS y JSON parsing
 app.use(cors());
 app.use(express.json());
 
-// Inicializar cliente de Google Gen AI
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY || "" });
 
-// Base de datos simulada de Leads
 const leads: any[] = [];
 
-// Configurar transportador de correo (Nodemailer)
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
@@ -44,28 +40,31 @@ app.post("/api/chat", async (req, res) => {
     }
 
     const systemInstruction = `
-Eres la Inteligencia Artificial Consultora de "UNO Arquitectos Mx", una de las firmas de arquitectura de ultra-lujo y eco-ingeniería más exclusivas de la Riviera Maya (con presencia en Tulum, Playa del Carmen y Ciudad de México).
-Tu propósito es asesorar a clientes de alto perfil (inversionistas, desarrolladores y personas con alto poder adquisitivo) sobre el diseño y la construcción de sus residencias de ensueño o proyectos hoteleros sustentables en la región.
+Eres el Asesor Técnico de Inteligencia Artificial de "UNO Arquitectos", estudio boutique de arquitectura, interiorismo y construcción con sede en la Riviera Maya (Tulum, Playa del Carmen, Cancún) y oficina en Polanco, Ciudad de México.
+Estás entrenado directamente con la visión y trayectoria del Arq. Angel Cereceda, Fundador y Director General de la firma (más de 20 años de experiencia en desarrollo inmobiliario y gestión integral de proyectos; Máster en Project Management por la Universidad Europea de Madrid, Máster en Desarrollo Sostenible, y ex Director en proyectos emblemáticos como Papaya Playa Project, Inmobilia Mayaliah 25,000m² y Selina).
 
-PAUTAS DE COMPORTAMIENTO Y ESTILO:
-1. Sofisticación y Exclusividad: Tu tono es extremadamente elegante, culto, cálido, formal y profesional. Usas un lenguaje preciso y refinado pero accesible.
-2. Expertise Técnico y Eco-Lujo: Hablas con propiedad de arquitectura orgánica brutalista, el uso del "Chukum" (resina ancestral maya para acabados impermeables), maderas nobles certificadas (como el Tzalam), e ingeniería civil avanzada para el suelo kárstico de la península (estudios de mecánica de suelo, cimentaciones con pilotes profundos y losas de cimentación robustas para evitar socavones y resistir huracanes categoría 5).
-3. Orientación al Negocio (Agendar Llamada): Tu objetivo secundario es sutilmente calificar el interés del usuario y guiarlo para que agende una llamada de consulta VIP directa con el Director de Proyectos de la firma usando el formulario de la web o el botón de WhatsApp.
-4. Multilingüe: Responde siempre en el idioma que te hable el usuario (Soportas Español, Inglés, Italiano y Francés de forma nativa).
+FILOSOFÍA Y REGLAS INSTITUCIONALES (GUÍA DE MARCA V2.2):
+- Propósito Oficial (Nivel 0): "Materializamos espacios que suman — a quien los habita, a quien los construye, al lugar que los recibe y a la comunidad que los rodea."
+- Tagline de Identidad (Nivel 1): "Arquitectura que pertenece. Espacios que perduran."
+- Tagline de Conversión (Nivel 2): "Diseño con sentido. Construcción con criterio."
+- Tono y Voz: "Tu proyecto puede hacerse. Te decimos cómo y cuánto." Hablas de forma clara, directa, humana y honesta. Sin lenguaje corporativo inflado ni frases cliché (NUNCA digas "hacemos tus sueños realidad", "los mejores arquitectos" ni "lujo a tu alcance").
+- Modelo de Trabajo: Servicio integral bajo un solo techo — diseño, gestión y ejecución —, enfocado en proyectos residenciales boutique y hospitality en el rango de $3M a $10M MXN.
+- Transparencia Total: Presupuestos paramétricos claros desde el primer día, sin cargos ocultos ni sorpresas técnicas.
 
-INFORMACIÓN DEL USUARIO (SI ESTÁ DISPONIBLE):
-${userProfile ? JSON.stringify(userProfile, null, 2) : "No especificada aún. Pregúntale con tacto sus preferencias conforme avance la conversación."}
+CAPACIDAD Y CRITERIO TÉCNICO:
+- Ingegneria de Suelo Kárstico: Cimentaciones con pilotes profundos de concreto armado para suelos con cenotes y ríos subterráneos.
+- Bioclimática y Materialidad: Acabados continuos de Chukum natural, maderas macizas certificadas (Tzalam y Parota) y concreto aparente.
+- Viabilidad Legal & Permisos: Gestión de licencias de construcción municipales, Manifestación de Impacto Ambiental (MIA), fusiones y normativas COS/CUS en Quintana Roo.
 
-CATÁLOGO DE PROYECTOS DE REFERENCIA DE UNO ARQUITECTOS (Menciónalos si encajan en su visión):
-- Villa Chukum (Tulum): Residencia brutalista de 450m² integrada con la selva. Acabados 100% Chukum, piscina natural y ventilación cruzada pasiva.
-- Casa Tzalam (Playa del Carmen): Santuario de madera noble y concreto aparente. Grandes voladizos, amplios ventanales de piso a techo con vidrio templado de alta resistencia y sistemas de energía solar integrados.
-- Cenote Sanctuary (Aldea Zama): Ingeniería avanzada sobre suelo kárstico. Cimentación con micropilotes de acero estructural a 12 metros de profundidad para asegurar la estabilidad estructural absoluta de la estructura sin dañar el ecosistema subterráneo.
-- Residencia Sascab (Sian Ka'an): Villa autosustentable con planta de tratamiento de agua por ósmosis inversa, paneles solares con almacenamiento de litio, y un diseño minimalista de volúmenes puros en tonos sutiles de sascab (tierra caliza local).
+GUÍA DE INTERACCIÓN:
+- Responde con sobriedad, precisión técnica y calidez.
+- Invita sutilmente al usuario a agendar una cita técnica presencial en el showroom de Tulum u oficina de Polanco CDMX, o contactar directamente por WhatsApp.
+- Responde siempre en el idioma en el que te escriba el usuario (Español, Inglés, Italiano, Francés).
 
-Estructura tu respuesta con un formato claro, usando saltos de línea para que sea fácil de leer en el chat. No inventes proyectos fuera de Tulum/Riviera Maya a menos que el cliente desee expandirse, en cuyo caso ofrece asesoría de viabilidad de suelo y normativa ambiental.
+INFORMACIÓN DEL USUARIO:
+${userProfile ? JSON.stringify(userProfile, null, 2) : "Usuario en consulta previa."}
 `;
 
-    // Convertir el historial al formato compatible con @google/genai
     const formattedContents = messages.map((m) => ({
       role: m.role === "assistant" ? "model" : "user",
       parts: [{ text: m.content }]
@@ -76,12 +75,12 @@ Estructura tu respuesta con un formato claro, usando saltos de línea para que s
       contents: formattedContents,
       config: {
         systemInstruction,
-        temperature: 0.7,
+        temperature: 0.5,
         maxOutputTokens: 1000,
       }
     });
 
-    const replyText = response.text || "Disculpe, he experimentado un breve contratiempo en mis sistemas de análisis. ¿Podría repetirme su inquietud?";
+    const replyText = response.text || "Disculpe, he experimentado una breve pausa. ¿Podría repetir su consulta técnica?";
     return res.json({ response: replyText });
 
   } catch (error: any) {
@@ -90,7 +89,7 @@ Estructura tu respuesta con un formato claro, usando saltos de línea para que s
   }
 });
 
-// 2. Endpoint del Asesor Conceptual Estructurado (Gemini - JSON Output)
+// 2. Endpoint del Asesor Conceptual Estructurado
 app.post("/api/advisor", async (req, res) => {
   try {
     const { message, language } = req.body;
@@ -98,21 +97,22 @@ app.post("/api/advisor", async (req, res) => {
       return res.status(500).json({ error: "GEMINI_API_KEY no configurado." });
     }
 
-    const systemPrompt = `You are a luxury bioclimatic architectural advisor for UNO Arquitectos.
-    Analyze the user's requirements and generate a highly refined architectural proposal in JSON format.
-    The language of the proposal must match: ${language === 'en' ? 'English' : 'Spanish'}.
-    The JSON structure must match this schema exactly:
+    const systemPrompt = `You are a technical architectural advisor for UNO Arquitectos led by Arch. Angel Cereceda.
+    Analyze the user's lot or project requirements and generate a realistic, buildable architectural proposal in JSON format.
+    Language: ${language === 'en' ? 'English' : 'Spanish'}.
+    Follow Brand Guide v2.2: "Architecture that belongs. Spaces that endure." Focus on real costs, native materials (Chukum, Tzalam), and karstic foundation engineering.
+    Schema:
     {
-      "projectTitle": "String - A tailored project title",
-      "conceptVision": "String - Bioclimatic design concept description focusing on local environment",
-      "architecturalStyle": "String - E.g. Tropical Brutalism, Biophilic Minimalist",
-      "materialsList": [{"name": "Material name (e.g., Tzalam, Chukum)", "description": "premium usage detail", "source": "regional source"}],
-      "sustainabilityFeatures": [{"feature": "sustainability strategy", "benefit": "ecological advantage"}],
+      "projectTitle": "Tailored project name",
+      "conceptVision": "Buildable bioclimatic design concept description",
+      "architecturalStyle": "Contemporary Tropical, Honest Minimalist",
+      "materialsList": [{"name": "Material (e.g. Natural Chukum, Tzalam wood)", "description": "usage detail", "source": "Regional"}],
+      "sustainabilityFeatures": [{"feature": "Bioclimatic strategy", "benefit": "Environmental advantage"}],
       "costEstimation": {
-        "totalEstimate": "String - Cost range e.g. $1,500,000 - $2,000,000 USD",
-        "phasesBreakdown": [{"phase": "e.g., Foundation, Finishes", "costRange": "range", "percentage": 30, "description": "details"}]
+        "totalEstimate": "Parametric cost range e.g. $3,000,000 - $6,000,000 MXN",
+        "phasesBreakdown": [{"phase": "Preconstruction, Structure, Gray Shell, Finishes, Handover", "costRange": "range", "percentage": 20, "description": "details"}]
       },
-      "nextSteps": ["String - Recommendation 1", "String - Recommendation 2"]
+      "nextSteps": ["Recommendation 1", "Recommendation 2"]
     }`;
 
     const response = await ai.models.generateContent({
@@ -133,7 +133,7 @@ app.post("/api/advisor", async (req, res) => {
   }
 });
 
-// 3. Endpoint de Leads (CRM Webhook Proxy)
+// 3. Endpoint de Leads
 app.post("/api/leads", async (req, res) => {
   try {
     const { name, email, phone, message, source } = req.body;
@@ -193,16 +193,16 @@ app.post("/api/contact", async (req, res) => {
   const mailOptions = {
     from: process.env.EMAIL_USER,
     to: process.env.EMAIL_RECEIVER,
-    subject: `Nueva consulta de proyecto de ultra-lujo: ${name}`,
+    subject: `Nueva consulta de proyecto residencial: ${name}`,
     html: `
       <div style="font-family: Arial, sans-serif; padding: 20px; color: #111; max-width: 600px; border: 1px solid #eaeaea;">
-        <h2 style="border-bottom: 2px solid #111; padding-bottom: 10px; text-transform: uppercase; letter-spacing: 1px;">Nueva Solicitud de Proyecto</h2>
+        <h2 style="border-bottom: 2px solid #00A3A3; padding-bottom: 10px; text-transform: uppercase; letter-spacing: 1px;">Nueva Solicitud de Consulta Técnica</h2>
         <p><strong>Nombre:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Teléfono:</strong> ${phone || "No especificado"}</p>
         <p><strong>Tipo de Proyecto:</strong> ${projectType || "No especificado"}</p>
         <p><strong>Presupuesto Estimado:</strong> ${budget || "No especificado"}</p>
-        <div style="margin-top: 20px; padding: 15px; background: #f9f9f9; border-left: 4px solid #111;">
+        <div style="margin-top: 20px; padding: 15px; background: #f9f9f9; border-left: 4px solid #00A3A3;">
           <p style="margin: 0; font-style: italic;">"${message}"</p>
         </div>
       </div>
@@ -214,11 +214,10 @@ app.post("/api/contact", async (req, res) => {
     res.json({ success: true, message: "Mensaje de contacto enviado con éxito." });
   } catch (error: any) {
     console.error("Error al enviar email:", error);
-    res.status(500).json({ error: "Error interno al enviar el mensaje de contacto por email." });
+    res.status(500).json({ error: "Error interno al enviar el mensaje por email." });
   }
 });
 
-// Configuración de Vite o archivos estáticos según el entorno
 async function startServer() {
   if (process.env.NODE_ENV !== "production") {
     const vite = await createViteServer({

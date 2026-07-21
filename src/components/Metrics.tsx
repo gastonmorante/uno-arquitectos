@@ -62,24 +62,24 @@ export default function Metrics() {
 
   const metricsData = [
     {
-      val: t("metrics.m1Val") || "15+",
+      val: t("metrics.m1Val") || "20+",
       title: t("metrics.m1Title") || "Años de Trayectoria",
-      desc: t("metrics.m1Desc") || "Liderando alta ingeniería en el sureste mexicano.",
+      desc: t("metrics.m1Desc") || "Más de 20 años liderando diseño, alta ingeniería y construcción.",
     },
     {
       val: t("metrics.m2Val") || "80K+",
       title: t("metrics.m2Title") || "m² Proyectados",
-      desc: t("metrics.m2Desc") || "Diseñados, calculados y construidos.",
+      desc: t("metrics.m2Desc") || "Diseñados, calculados y construidos sin sobrecostos.",
     },
     {
       val: t("metrics.m3Val") || "100%",
-      title: t("metrics.m3Title") || "Viabilidad Legal",
-      desc: t("metrics.m3Desc") || "Aprobación y gestoría ágil de licencias.",
+      title: t("metrics.m3Title") || "Viabilidad Legal & Técnica",
+      desc: t("metrics.m3Desc") || "Gestoría ágil de licencias de construcción y permisos ambientales.",
     },
     {
       val: t("metrics.m4Val") || "+150",
-      title: t("metrics.m4Title") || "Clientes de Élite",
-      desc: t("metrics.m4Desc") || "Propiedades residenciales exclusivas.",
+      title: t("metrics.m4Title") || "Proyectos Entregados",
+      desc: t("metrics.m4Desc") || "Residencias boutique y desarrollos boutique hospitality.",
     },
   ];
 
