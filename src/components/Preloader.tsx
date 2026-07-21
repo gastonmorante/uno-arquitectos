@@ -55,7 +55,7 @@ export default function Preloader() {
                 d="M 100 20 L 169.28 60 L 169.28 140 L 130.31 117.5 L 130.31 82.5 L 100 65 Z"
                 fill="#00A3A3"
                 initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 0.5, scale: 1 }}
+                animate={{ opacity: 0.95, scale: 1 }}
                 transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
               />
 
@@ -64,9 +64,32 @@ export default function Preloader() {
                 d="M 30.72 140 L 100 180 L 169.28 140 L 130.31 117.5 L 100 135 L 69.69 117.5 Z"
                 fill="#00A3A3"
                 initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 0.8, scale: 1 }}
+                animate={{ opacity: 0.95, scale: 1 }}
                 transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}
               />
+
+              {/* CENTRAL 3D ISOMETRIC CUBE */}
+              <motion.g
+                initial={{ opacity: 0, scale: 0.7 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, delay: 0.7, ease: "easeOut" }}
+              >
+                <path
+                  d="M 100 77 L 119.92 88.5 L 119.92 111.5 L 100 123 L 80.08 111.5 L 80.08 88.5 Z"
+                  fill="#FFFFFF"
+                  stroke="#00A3A3"
+                  strokeWidth="4"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M 100 100 L 100 123 M 100 100 L 80.08 88.5 M 100 100 L 119.92 88.5"
+                  stroke="#00A3A3"
+                  strokeWidth="4"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </motion.g>
             </svg>
           </div>
 

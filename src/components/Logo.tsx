@@ -20,12 +20,12 @@ export const Logo: React.FC<LogoProps> = ({
   theme = "adaptive",
   textSize = "text-base"
 }) => {
-  // Determine color based on scroll state and theme per brand guide
   const isDarkBg = theme === "dark" || (theme === "adaptive" && !isScrolled);
   
   const iconColor = "#00A3A3"; // Strictly Teal UNO (#00A3A3)
   const titleColor = isDarkBg ? "text-white" : "text-[#0a0a0a]";
   const subtitleColor = isDarkBg ? "text-zinc-300" : "text-[#4A4A4A]";
+  const cubeBgColor = "#FFFFFF";
 
   const renderApertureSegments = () => {
     if (!animated) {
@@ -50,6 +50,25 @@ export const Logo: React.FC<LogoProps> = ({
           <g transform="translate(0, 4)">
             <path d="M 30.72 140 L 100 180 L 169.28 140 L 130.31 117.5 L 100 135 L 69.69 117.5 Z" fill={iconColor} />
           </g>
+
+          {/* CENTRAL 3D ISOMETRIC CUBE */}
+          <g>
+            <path
+              d="M 100 77 L 119.92 88.5 L 119.92 111.5 L 100 123 L 80.08 111.5 L 80.08 88.5 Z"
+              fill={cubeBgColor}
+              stroke={iconColor}
+              strokeWidth="4"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M 100 100 L 100 123 M 100 100 L 80.08 88.5 M 100 100 L 119.92 88.5"
+              stroke={iconColor}
+              strokeWidth="4"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </g>
         </svg>
       );
     }
@@ -68,7 +87,7 @@ export const Logo: React.FC<LogoProps> = ({
             fill={iconColor}
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 0.95, scale: 1 }}
-            transition={{ duration: 1, ease: "easeOut" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
           />
         </g>
 
@@ -79,7 +98,7 @@ export const Logo: React.FC<LogoProps> = ({
             fill={iconColor}
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 0.95, scale: 1 }}
-            transition={{ duration: 1, delay: 0.25, ease: "easeOut" }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           />
         </g>
 
@@ -90,9 +109,32 @@ export const Logo: React.FC<LogoProps> = ({
             fill={iconColor}
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 0.95, scale: 1 }}
-            transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
+            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
           />
         </g>
+
+        {/* CENTRAL 3D ISOMETRIC CUBE */}
+        <motion.g
+          initial={{ opacity: 0, scale: 0.7 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+        >
+          <path
+            d="M 100 77 L 119.92 88.5 L 119.92 111.5 L 100 123 L 80.08 111.5 L 80.08 88.5 Z"
+            fill={cubeBgColor}
+            stroke={iconColor}
+            strokeWidth="4"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M 100 100 L 100 123 M 100 100 L 80.08 88.5 M 100 100 L 119.92 88.5"
+            stroke={iconColor}
+            strokeWidth="4"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </motion.g>
       </svg>
     );
   };

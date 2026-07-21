@@ -48,6 +48,25 @@ const renderUnoIcon = (size: number, className = "") => (
         fill="currentColor"
       />
     </g>
+
+    {/* CENTRAL 3D ISOMETRIC CUBE */}
+    <g>
+      <path
+        d="M 100 77 L 119.92 88.5 L 119.92 111.5 L 100 123 L 80.08 111.5 L 80.08 88.5 Z"
+        fill="#FFFFFF"
+        stroke="currentColor"
+        strokeWidth="4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M 100 100 L 100 123 M 100 100 L 80.08 88.5 M 100 100 L 119.92 88.5"
+        stroke="currentColor"
+        strokeWidth="4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </g>
   </svg>
 );
 
