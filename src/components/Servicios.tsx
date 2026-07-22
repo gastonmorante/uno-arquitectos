@@ -41,7 +41,7 @@ export default function Servicios() {
                 {t("servicios.phases.f0Desc")}
               </p>
             </div>
-            <div className="w-12 group-hover:w-full h-[2px] bg-[#00A3A3] transition-all duration-500 mt-6"></div>
+            <div className="w-12 group-hover:w-full h-[2px] bg-[#C8B89A] transition-all duration-500 mt-6"></div>
           </div>
 
           {/* SERVICIO 02 */}
@@ -60,7 +60,7 @@ export default function Servicios() {
                 {t("servicios.phases.f1Desc")}
               </p>
             </div>
-            <div className="w-12 group-hover:w-full h-[2px] bg-[#00A3A3] transition-all duration-500 mt-6"></div>
+            <div className="w-12 group-hover:w-full h-[2px] bg-[#C8B89A] transition-all duration-500 mt-6"></div>
           </div>
 
           {/* SERVICIO 03 */}
@@ -79,7 +79,7 @@ export default function Servicios() {
                 {t("servicios.phases.f2Desc")}
               </p>
             </div>
-            <div className="w-12 group-hover:w-full h-[2px] bg-[#00A3A3] transition-all duration-500 mt-6"></div>
+            <div className="w-12 group-hover:w-full h-[2px] bg-[#C8B89A] transition-all duration-500 mt-6"></div>
           </div>
 
           {/* SERVICIO 04 */}
@@ -98,7 +98,7 @@ export default function Servicios() {
                 {t("servicios.phases.f3Desc")}
               </p>
             </div>
-            <div className="w-12 group-hover:w-full h-[2px] bg-[#00A3A3] transition-all duration-500 mt-6"></div>
+            <div className="w-12 group-hover:w-full h-[2px] bg-[#C8B89A] transition-all duration-500 mt-6"></div>
           </div>
 
           {/* SERVICIO 05 */}
@@ -117,7 +117,7 @@ export default function Servicios() {
                 {t("servicios.phases.f4Desc")}
               </p>
             </div>
-            <div className="w-12 group-hover:w-full h-[2px] bg-[#00A3A3] transition-all duration-500 mt-6"></div>
+            <div className="w-12 group-hover:w-full h-[2px] bg-[#C8B89A] transition-all duration-500 mt-6"></div>
           </div>
 
         </div>

@@ -91,7 +91,7 @@ export default function Filosofia() {
               </div>
             </div>
 
-            <div className="h-[2px] w-20 bg-[#00A3A3] mt-10"></div>
+            <div className="h-[2px] w-20 bg-[#C8B89A] mt-10"></div>
           </div>
 
         </div>

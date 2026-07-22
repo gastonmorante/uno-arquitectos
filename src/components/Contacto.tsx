@@ -132,7 +132,7 @@ export default function Contacto() {
               </div>
 
               {/* Tel & Mail */}
-              <div className="pt-8 border-t border-zinc-100 space-y-4 text-xs text-[#4A4A4A]">
+              <div className="pt-8 border-t border-[#C8B89A]/30 space-y-4 text-xs text-[#4A4A4A]">
                 <div className="flex items-center gap-3">
                   <Phone className="w-4 h-4 text-[#00A3A3]" />
                   <span>+52 (984) 123 4567 • +52 (55) 9876 5432</span>

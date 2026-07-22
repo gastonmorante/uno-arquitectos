@@ -77,7 +77,7 @@ export default function Portfolio() {
                     </p>
                   </div>
 
-                  <div className="pt-4 border-t border-zinc-100 flex items-center justify-between">
+                  <div className="pt-4 border-t border-[#C8B89A]/30 flex items-center justify-between">
                     <span className="text-xs font-semibold tracking-wider text-[#4A4A4A]">
                       {item.area}
                     </span>
@@ -165,7 +165,7 @@ export default function Portfolio() {
                       {language === "es" ? selectedProject.descEs : selectedProject.descEn}
                     </p>
 
-                    <div className="space-y-4 border-t border-b border-zinc-100 py-6 mb-8 text-xs text-[#4A4A4A]">
+                    <div className="space-y-4 border-t border-b border-[#C8B89A]/30 py-6 mb-8 text-xs text-[#4A4A4A]">
                       <div className="flex justify-between">
                         <span className="text-zinc-500 uppercase tracking-wider text-[10px] font-semibold">Área:</span>
                         <span className="text-[#1E1E1E] font-semibold">{selectedProject.area}</span>
@@ -193,7 +193,7 @@ export default function Portfolio() {
                     </div>
                   </div>
 
-                  <div className="mt-10 pt-6 border-t border-zinc-100 flex items-center justify-between">
+                  <div className="mt-10 pt-6 border-t border-[#C8B89A]/30 flex items-center justify-between">
                     <button
                       onClick={() => {
                         setSelectedProject(null);
