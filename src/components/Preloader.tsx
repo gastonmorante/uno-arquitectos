@@ -26,7 +26,7 @@ export default function Preloader() {
         <motion.div
           exit={{ opacity: 0 }}
           transition={{ duration: 0.8, ease: "easeInOut" }}
-          className="fixed inset-0 bg-[#0a0a0a] z-50 flex flex-col justify-center items-center font-sans"
+          className="fixed inset-0 bg-[#1E1E1E] z-50 flex flex-col justify-center items-center font-sans"
         >
           {/* GEOMETRIC UNO APERTURE ANIMATION */}
           <div className="relative mb-12 flex items-center justify-center">

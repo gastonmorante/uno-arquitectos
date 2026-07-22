@@ -77,7 +77,7 @@ export default function Faqs() {
               {isEs ? "Resolviendo Dudas Con Criterio" : "Clear Answers & Technical Criteria"}
             </span>
           </div>
-          <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-[#0a0a0a] mb-6">
+          <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-[#1E1E1E] mb-6">
             {isEs ? "Preguntas Frecuentes" : "Frequently Asked Questions"}
           </h2>
           <p className="text-sm md:text-base text-[#4A4A4A] font-normal leading-relaxed">
@@ -118,7 +118,7 @@ export default function Faqs() {
                   </div>
                   {isSelected && <CheckCircle2 className="w-5 h-5 text-[#00A3A3]" />}
                 </div>
-                <h3 className="text-base font-semibold text-[#0a0a0a] mb-1.5 group-hover:text-[#00A3A3] transition-colors">
+                <h3 className="text-base font-semibold text-[#1E1E1E] mb-1.5 group-hover:text-[#00A3A3] transition-colors">
                   {cat.title}
                 </h3>
                 <p className="text-xs text-zinc-500 font-normal leading-relaxed mb-4">
@@ -156,7 +156,7 @@ export default function Faqs() {
                   ? "Buscar pregunta por palabra clave (ej. llave en mano, Tulum, costos)..."
                   : "Search questions by keyword (e.g. turnkey, permits, costs)..."
               }
-              className="w-full bg-[#DDDDD9]/20 border border-zinc-200 focus:border-[#00A3A3] focus:bg-white rounded-xs pl-11 pr-4 py-3 text-xs text-[#0a0a0a] placeholder:text-zinc-400 focus:outline-none transition-all"
+              className="w-full bg-[#DDDDD9]/20 border border-zinc-200 focus:border-[#00A3A3] focus:bg-white rounded-xs pl-11 pr-4 py-3 text-xs text-[#1E1E1E] placeholder:text-zinc-400 focus:outline-none transition-all"
             />
             {searchQuery && (
               <button
@@ -172,7 +172,7 @@ export default function Faqs() {
             <div className="flex justify-center items-center gap-3 text-xs text-zinc-500">
               <span>
                 {isEs ? "Mostrando preguntas de:" : "Showing questions for:"}{" "}
-                <strong className="text-[#0a0a0a] font-semibold uppercase tracking-wider">
+                <strong className="text-[#1E1E1E] font-semibold uppercase tracking-wider">
                   {selectedCategory === "all"
                     ? isEs ? "Todas las Categorías" : "All Categories"
                     : categories.find((c) => c.id === selectedCategory)?.title}
@@ -219,7 +219,7 @@ export default function Faqs() {
                         className="w-full px-6 py-5 flex items-center justify-between text-left cursor-pointer group"
                         aria-expanded={isOpen}
                       >
-                        <span className="text-sm md:text-base font-semibold text-[#0a0a0a] group-hover:text-[#00A3A3] transition-colors pr-4">
+                        <span className="text-sm md:text-base font-semibold text-[#1E1E1E] group-hover:text-[#00A3A3] transition-colors pr-4">
                           <span className="text-[#00A3A3] mr-3 font-mono text-xs opacity-75">
                             {String(index + 1).padStart(2, "0")}.
                           </span>
@@ -279,7 +279,7 @@ export default function Faqs() {
               className="text-center py-12 px-6 bg-zinc-50/50 border border-dashed border-zinc-200 rounded-xs"
             >
               <HelpCircle className="w-8 h-8 text-[#00A3A3] mx-auto mb-3 opacity-60" />
-              <h4 className="text-sm font-semibold text-[#0a0a0a] mb-1">
+              <h4 className="text-sm font-semibold text-[#1E1E1E] mb-1">
                 {isEs ? "Seleccione una categoría arriba para ver las preguntas" : "Select a category above to view questions"}
               </h4>
               <p className="text-xs text-zinc-500 font-normal">
@@ -292,7 +292,7 @@ export default function Faqs() {
         </AnimatePresence>
 
         {/* Bottom Conversion Banner */}
-        <div className="mt-16 bg-[#0a0a0a] text-white p-8 md:p-12 rounded-xs relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8 border border-zinc-800">
+        <div className="mt-16 bg-[#1E1E1E] text-white p-8 md:p-12 rounded-xs relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8 border border-zinc-800">
           <div className="relative z-10 text-left max-w-xl">
             <span className="text-[10px] uppercase tracking-[0.25em] font-semibold text-[#00A3A3] block mb-2">
               {isEs ? "Atención Personalizada" : "Personalized Assistance"}

@@ -24,7 +24,7 @@ export const TRANSLATIONS: Record<Language, Record<string, any>> = {
     hero: {
       tagline: "Arquitectura que pertenece. Espacios que perduran.",
       heading: "UNO Arquitectos",
-      subheading: "Tu proyecto puede hacerse. Te decimos cómo y cuánto. Servicio integral de diseño residencial premium, construcción llave en mano e ingeniería en suelo kárstico en la Riviera Maya.",
+      subheading: "Servicios integrales de diseño y construcción llave en mano en Riviera Maya desde 2017. Nos especializamos en obra nueva y remodelaciones comerciales, residenciales, hospitalarios y proyectos off the grid.",
       scroll: "Deslice para explorar",
       metricBuild: "Metros Construidos",
       metricProjects: "Proyectos Entregados",

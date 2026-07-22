@@ -17,7 +17,7 @@ export default function Hero() {
   return (
     <section
       id="inicio"
-      className="relative min-h-screen w-full flex items-center justify-center bg-[#0a0a0a] overflow-hidden font-sans pt-24 pb-16"
+      className="relative min-h-screen w-full flex items-center justify-center bg-[#1E1E1E] overflow-hidden font-sans pt-24 pb-16"
     >
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
@@ -28,7 +28,7 @@ export default function Hero() {
           alt="UNO Arquitectos Riviera Maya"
           referrerPolicy="no-referrer"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-[#0a0a0a]"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-[#1E1E1E]"></div>
       </div>
       
       {/* Hero Content */}

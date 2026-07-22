@@ -14,7 +14,7 @@ export default function Filosofia() {
           <span className="text-[#00A3A3] text-xs uppercase tracking-[0.4em] font-semibold block mb-4">
             {t("filosofia.tagline")}
           </span>
-          <h2 className="text-3xl md:text-5xl font-semibold text-[#0a0a0a] leading-tight tracking-tight mb-6">
+          <h2 className="text-3xl md:text-5xl font-semibold text-[#1E1E1E] leading-tight tracking-tight mb-6">
             "{t("filosofia.purpose")}"
           </h2>
         </div>
@@ -36,7 +36,7 @@ export default function Filosofia() {
           
           {/* Right Column - Philosophy & Values */}
           <div className="lg:col-span-7 text-left order-1 lg:order-2">
-            <h3 className="text-2xl md:text-4xl font-semibold text-[#0a0a0a] leading-snug mb-6 tracking-tight">
+            <h3 className="text-2xl md:text-4xl font-semibold text-[#1E1E1E] leading-snug mb-6 tracking-tight">
               {t("filosofia.heading")}
             </h3>
             
@@ -53,7 +53,7 @@ export default function Filosofia() {
                   <div className="w-8 h-8 rounded-full bg-[#00A3A3]/10 flex items-center justify-center text-[#00A3A3]">
                     <Trees className="w-4 h-4 stroke-[2]" />
                   </div>
-                  <h4 className="font-semibold text-xs uppercase tracking-wider text-[#0a0a0a]">
+                  <h4 className="font-semibold text-xs uppercase tracking-wider text-[#1E1E1E]">
                     {t("filosofia.valSust")}
                   </h4>
                 </div>
@@ -67,7 +67,7 @@ export default function Filosofia() {
                   <div className="w-8 h-8 rounded-full bg-[#00A3A3]/10 flex items-center justify-center text-[#00A3A3]">
                     <HeartHandshake className="w-4 h-4 stroke-[2]" />
                   </div>
-                  <h4 className="font-semibold text-xs uppercase tracking-wider text-[#0a0a0a]">
+                  <h4 className="font-semibold text-xs uppercase tracking-wider text-[#1E1E1E]">
                     {t("filosofia.valIntegr")}
                   </h4>
                 </div>
@@ -81,7 +81,7 @@ export default function Filosofia() {
                   <div className="w-8 h-8 rounded-full bg-[#00A3A3]/10 flex items-center justify-center text-[#00A3A3]">
                     <ShieldCheck className="w-4 h-4 stroke-[2]" />
                   </div>
-                  <h4 className="font-semibold text-xs uppercase tracking-wider text-[#0a0a0a]">
+                  <h4 className="font-semibold text-xs uppercase tracking-wider text-[#1E1E1E]">
                     {t("filosofia.valIng")}
                   </h4>
                 </div>

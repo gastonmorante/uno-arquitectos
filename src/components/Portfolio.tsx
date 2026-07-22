@@ -21,7 +21,7 @@ export default function Portfolio() {
           <span className="text-[#00A3A3] text-xs uppercase tracking-[0.4em] font-semibold block mb-3 animate-fadeIn">
             {t("portfolio.tagline")}
           </span>
-          <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-[#0a0a0a] animate-slideUp">
+          <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-[#1E1E1E] animate-slideUp">
             {t("portfolio.heading")}
           </h2>
           <p className="text-[#4A4A4A] text-sm mt-3 font-normal max-w-xl">
@@ -59,14 +59,14 @@ export default function Portfolio() {
                       <Maximize2 className="w-5 h-5" />
                     </button>
                   </div>
-                  <span className="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 text-[10px] font-medium tracking-wider text-[#0a0a0a] uppercase shadow-xs">
+                  <span className="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 text-[10px] font-medium tracking-wider text-[#1E1E1E] uppercase shadow-xs">
                     {language === "es" ? "Proyecto Residencial" : "Residential Project"}
                   </span>
                 </div>
 
                 <div className="p-6 text-left flex-1 flex flex-col justify-between">
                   <div>
-                    <h3 className="text-xl font-semibold text-[#0a0a0a] mb-2 group-hover:text-[#00A3A3] transition-colors">
+                    <h3 className="text-xl font-semibold text-[#1E1E1E] mb-2 group-hover:text-[#00A3A3] transition-colors">
                       {language === "es" ? item.titleEs : item.titleEn}
                     </h3>
                     <p className="text-[#00A3A3] font-medium text-xs mb-3">
@@ -102,12 +102,12 @@ export default function Portfolio() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/90 z-50 overflow-y-auto flex justify-center items-start py-10 px-4 md:px-12 backdrop-blur-md font-sans"
+            className="fixed inset-0 bg-[#1E1E1E]/90 z-50 overflow-y-auto flex justify-center items-start py-10 px-4 md:px-12 backdrop-blur-md font-sans"
           >
             <div className="relative w-full max-w-6xl bg-white text-[#4A4A4A] rounded-xs overflow-hidden my-auto shadow-2xl">
               <button
                 onClick={() => setSelectedProject(null)}
-                className="absolute top-4 right-4 z-10 bg-black/10 hover:bg-black/20 text-[#0a0a0a] p-2.5 rounded-full transition-colors cursor-pointer"
+                className="absolute top-4 right-4 z-10 bg-black/10 hover:bg-black/20 text-[#1E1E1E] p-2.5 rounded-full transition-colors cursor-pointer"
                 aria-label="Close modal"
               >
                 <X className="w-5 h-5" />
@@ -115,7 +115,7 @@ export default function Portfolio() {
 
               <div className="grid grid-cols-1 lg:grid-cols-12">
                 {/* Visual Viewport with Thumbnail Gallery */}
-                <div className="lg:col-span-7 bg-[#0a0a0a] relative flex flex-col justify-between min-h-[450px]">
+                <div className="lg:col-span-7 bg-[#1E1E1E] relative flex flex-col justify-between min-h-[450px]">
                   <div className="flex-1 w-full h-[380px] md:h-[450px] relative overflow-hidden">
                     <img
                       src={activeImage || selectedProject.image}
@@ -124,13 +124,13 @@ export default function Portfolio() {
                       loading="lazy"
                       className="w-full h-full object-cover transition-all duration-500"
                     />
-                    <div className="absolute bottom-4 left-4 bg-black/75 backdrop-blur-md px-4 py-2 text-white text-xs font-medium tracking-wider">
+                    <div className="absolute bottom-4 left-4 bg-[#1E1E1E]/85 backdrop-blur-md px-4 py-2 text-white text-xs font-medium tracking-wider">
                       {language === "es" ? selectedProject.locationEs : selectedProject.locationEn}
                     </div>
                   </div>
 
                   {/* Interiores / Exterior Selector */}
-                  <div className="bg-[#0a0a0a] p-4 flex gap-3 overflow-x-auto border-t border-zinc-800 justify-start items-center">
+                  <div className="bg-[#1E1E1E] p-4 flex gap-3 overflow-x-auto border-t border-zinc-800 justify-start items-center">
                     {selectedProject.gallery.map((img, i) => {
                       const isSelected = (activeImage || selectedProject.image) === img.url;
                       return (
@@ -158,7 +158,7 @@ export default function Portfolio() {
                     <span className="text-[#00A3A3] text-xs uppercase tracking-[0.3em] font-semibold block mb-3">
                       {language === "es" ? "Ficha Técnica de Proyecto" : "Technical Project File"}
                     </span>
-                    <h3 className="text-3xl font-semibold text-[#0a0a0a] mb-3">
+                    <h3 className="text-3xl font-semibold text-[#1E1E1E] mb-3">
                       {language === "es" ? selectedProject.titleEs : selectedProject.titleEn}
                     </h3>
                     <p className="text-[#4A4A4A] text-sm leading-relaxed mb-8">
@@ -168,20 +168,20 @@ export default function Portfolio() {
                     <div className="space-y-4 border-t border-b border-zinc-100 py-6 mb-8 text-xs text-[#4A4A4A]">
                       <div className="flex justify-between">
                         <span className="text-zinc-500 uppercase tracking-wider text-[10px] font-semibold">Área:</span>
-                        <span className="text-[#0a0a0a] font-semibold">{selectedProject.area}</span>
+                        <span className="text-[#1E1E1E] font-semibold">{selectedProject.area}</span>
                       </div>
                       <div className="flex justify-between">
                         <span className="text-zinc-500 uppercase tracking-wider text-[10px] font-semibold">{language === "es" ? "Material Principal:" : "Main Material:"}</span>
-                        <span className="text-[#0a0a0a] font-semibold">{selectedProject.materials}</span>
+                        <span className="text-[#1E1E1E] font-semibold">{selectedProject.materials}</span>
                       </div>
                       <div className="flex justify-between">
                         <span className="text-zinc-500 uppercase tracking-wider text-[10px] font-semibold">{language === "es" ? "Tipo de Proyecto:" : "Project Type:"}</span>
-                        <span className="text-[#0a0a0a] font-semibold">{selectedProject.type}</span>
+                        <span className="text-[#1E1E1E] font-semibold">{selectedProject.type}</span>
                       </div>
                     </div>
 
                     <div className="space-y-3">
-                      <h4 className="text-xs uppercase tracking-wider font-semibold text-[#0a0a0a] mb-2">
+                      <h4 className="text-xs uppercase tracking-wider font-semibold text-[#1E1E1E] mb-2">
                         {language === "es" ? "Especificaciones Estructurales:" : "Structural Highlights:"}
                       </h4>
                       {(language === "es" ? selectedProject.specsEs : selectedProject.specsEn).map((spec, i) => (

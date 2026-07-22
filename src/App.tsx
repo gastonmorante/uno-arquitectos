@@ -62,7 +62,7 @@ export default function App() {
             </section>
           </main>
 
-          <footer id="main-footer" className="bg-[#0a0a0a] border-t border-zinc-800 py-10 text-center text-xs text-zinc-400 font-sans">
+          <footer id="main-footer" className="bg-[#1E1E1E] border-t border-zinc-800 py-10 text-center text-xs text-zinc-400 font-sans">
             <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
               <p className="font-normal text-zinc-400">
                 © {new Date().getFullYear()} <span className="font-semibold text-white">UNO Arquitectos Mx</span>. Todos los derechos reservados.

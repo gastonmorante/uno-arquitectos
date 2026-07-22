@@ -399,7 +399,7 @@ export default function AIConsultant() {
       const parts = cleanLine.split(/\*\*([\s\S]*?)\*\*/g);
       const formattedParts = parts.map((part, partIdx) => {
         if (partIdx % 2 === 1) {
-          return <strong key={partIdx} className="font-semibold text-[#0a0a0a]">{part}</strong>;
+          return <strong key={partIdx} className="font-semibold text-[#1E1E1E]">{part}</strong>;
         }
         return part;
       });
@@ -439,7 +439,7 @@ export default function AIConsultant() {
           aria-label="WhatsApp Contact"
         >
           <MessageCircle className="w-6 h-6 text-white" />
-          <span className="absolute right-14 bg-[#0a0a0a] text-white text-xs font-semibold uppercase tracking-wider py-1.5 px-3 rounded-xs whitespace-nowrap shadow-lg opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none">
+          <span className="absolute right-14 bg-[#1E1E1E] text-white text-xs font-semibold uppercase tracking-wider py-1.5 px-3 rounded-xs whitespace-nowrap shadow-lg opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none">
             {language === "es" ? "WhatsApp Directo" : "WhatsApp Chat"}
           </span>
           <span className="absolute top-0 right-0 w-3 h-3 bg-red-500 border-2 border-white rounded-full"></span>
@@ -459,7 +459,7 @@ export default function AIConsultant() {
               className="bg-white border border-zinc-200/80 shadow-2xl rounded-xs overflow-hidden w-[92vw] sm:w-[380px] h-[520px] flex flex-col mb-4"
             >
               {/* Header */}
-              <div className="bg-[#0a0a0a] text-white py-3.5 px-4 flex items-center justify-between border-b border-zinc-800">
+              <div className="bg-[#1E1E1E] text-white py-3.5 px-4 flex items-center justify-between border-b border-zinc-800">
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 rounded-full bg-[#00A3A3]/20 border border-[#00A3A3]/40 flex items-center justify-center text-[#00A3A3]">
                     {renderUnoIcon(16)}
@@ -572,7 +572,7 @@ export default function AIConsultant() {
                       ? (language === "es" ? "Escriba su Correo Electrónico..." : "Enter your Email Address...")
                       : (language === "es" ? "Pregunte sobre permisos, materiales, estructura..." : "Ask about permits, materials, engineering...")
                   }
-                  className="flex-1 bg-zinc-50 border border-zinc-300 rounded-xs px-3.5 py-2.5 text-xs text-[#0a0a0a] focus:outline-none focus:border-[#00A3A3] focus:bg-white transition-all min-h-[44px]"
+                  className="flex-1 bg-zinc-50 border border-zinc-300 rounded-xs px-3.5 py-2.5 text-xs text-[#1E1E1E] focus:outline-none focus:border-[#00A3A3] focus:bg-white transition-all min-h-[44px]"
                 />
                 <button
                   type="submit"
@@ -594,12 +594,12 @@ export default function AIConsultant() {
           onClick={() => setIsOpen(!isOpen)}
           whileHover={{ scale: 1.06 }}
           whileTap={{ scale: 0.95 }}
-          className="bg-[#0a0a0a] hover:bg-zinc-900 border border-zinc-800 text-white p-4 rounded-full shadow-2xl flex items-center justify-center cursor-pointer group min-w-[52px] min-h-[52px]"
+          className="bg-[#1E1E1E] hover:bg-zinc-800 border border-zinc-800 text-white p-4 rounded-full shadow-2xl flex items-center justify-center cursor-pointer group min-w-[52px] min-h-[52px]"
           aria-label="Toggle AI consultant chatbot"
         >
           <Sparkles className="w-6 h-6 text-[#00A3A3] group-hover:rotate-12 transition-transform duration-300" />
           
-          <span className="absolute left-14 bg-[#0a0a0a] text-white text-xs font-semibold tracking-wider py-1.5 px-3 rounded-xs whitespace-nowrap shadow-lg opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none">
+          <span className="absolute left-14 bg-[#1E1E1E] text-white text-xs font-semibold tracking-wider py-1.5 px-3 rounded-xs whitespace-nowrap shadow-lg opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none">
             {language === "es" ? "Asesor AI" : "AI Advisor"}
           </span>
           <span className="absolute -top-1 -right-1 flex h-3.5 w-3.5">

@@ -6,7 +6,7 @@ export default function Servicios() {
   const { t } = useLanguage();
 
   return (
-    <section id="servicios" className="py-28 md:py-36 px-6 md:px-12 bg-[#DDDDD9] text-[#0a0a0a] relative overflow-hidden font-sans">
+    <section id="servicios" className="py-28 md:py-36 px-6 md:px-12 bg-[#DDDDD9] text-[#1E1E1E] relative overflow-hidden font-sans">
       <div className="max-w-7xl mx-auto relative z-10">
         
         <div className="flex flex-col md:flex-row justify-between items-baseline mb-16 gap-6 text-left">
@@ -14,7 +14,7 @@ export default function Servicios() {
             <span className="text-[#00A3A3] text-xs uppercase tracking-[0.4em] font-semibold block">
               {t("servicios.tagline")}
             </span>
-            <h2 className="text-3xl md:text-5xl font-semibold tracking-tight leading-tight text-[#0a0a0a]">
+            <h2 className="text-3xl md:text-5xl font-semibold tracking-tight leading-tight text-[#1E1E1E]">
               {t("servicios.heading")}
             </h2>
           </div>
@@ -34,7 +34,7 @@ export default function Servicios() {
                   <FileText className="w-4 h-4 stroke-[2]" />
                 </div>
               </div>
-              <h3 className="text-xl font-semibold mt-8 mb-4 text-[#0a0a0a] group-hover:text-[#00A3A3] transition-colors">
+              <h3 className="text-xl font-semibold mt-8 mb-4 text-[#1E1E1E] group-hover:text-[#00A3A3] transition-colors">
                 {t("servicios.phases.f0")}
               </h3>
               <p className="text-[#4A4A4A] text-sm font-normal leading-relaxed">
@@ -53,7 +53,7 @@ export default function Servicios() {
                   <Hammer className="w-4 h-4 stroke-[2]" />
                 </div>
               </div>
-              <h3 className="text-xl font-semibold mt-8 mb-4 text-[#0a0a0a] group-hover:text-[#00A3A3] transition-colors">
+              <h3 className="text-xl font-semibold mt-8 mb-4 text-[#1E1E1E] group-hover:text-[#00A3A3] transition-colors">
                 {t("servicios.phases.f1")}
               </h3>
               <p className="text-[#4A4A4A] text-sm font-normal leading-relaxed">
@@ -72,7 +72,7 @@ export default function Servicios() {
                   <Landmark className="w-4 h-4 stroke-[2]" />
                 </div>
               </div>
-              <h3 className="text-xl font-semibold mt-8 mb-4 text-[#0a0a0a] group-hover:text-[#00A3A3] transition-colors">
+              <h3 className="text-xl font-semibold mt-8 mb-4 text-[#1E1E1E] group-hover:text-[#00A3A3] transition-colors">
                 {t("servicios.phases.f2")}
               </h3>
               <p className="text-[#4A4A4A] text-sm font-normal leading-relaxed">
@@ -91,7 +91,7 @@ export default function Servicios() {
                   <Award className="w-4 h-4 stroke-[2]" />
                 </div>
               </div>
-              <h3 className="text-xl font-semibold mt-8 mb-4 text-[#0a0a0a] group-hover:text-[#00A3A3] transition-colors">
+              <h3 className="text-xl font-semibold mt-8 mb-4 text-[#1E1E1E] group-hover:text-[#00A3A3] transition-colors">
                 {t("servicios.phases.f3")}
               </h3>
               <p className="text-[#4A4A4A] text-sm font-normal leading-relaxed">
@@ -110,7 +110,7 @@ export default function Servicios() {
                   <Eye className="w-4 h-4 stroke-[2]" />
                 </div>
               </div>
-              <h3 className="text-xl font-semibold mt-8 mb-4 text-[#0a0a0a] group-hover:text-[#00A3A3] transition-colors">
+              <h3 className="text-xl font-semibold mt-8 mb-4 text-[#1E1E1E] group-hover:text-[#00A3A3] transition-colors">
                 {t("servicios.phases.f4")}
               </h3>
               <p className="text-[#4A4A4A] text-sm font-normal leading-relaxed">

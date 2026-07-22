@@ -23,7 +23,7 @@ export const Logo: React.FC<LogoProps> = ({
   const isDarkBg = theme === "dark" || (theme === "adaptive" && !isScrolled);
   
   const iconColor = "#00A3A3"; // Strictly Teal UNO (#00A3A3)
-  const titleColor = isDarkBg ? "text-white" : "text-[#0a0a0a]";
+  const titleColor = isDarkBg ? "text-white" : "text-[#1E1E1E]";
   const subtitleColor = isDarkBg ? "text-zinc-300" : "text-[#4A4A4A]";
   const cubeBgColor = "#FFFFFF";
 

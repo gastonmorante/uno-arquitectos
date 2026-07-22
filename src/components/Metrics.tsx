@@ -45,7 +45,7 @@ const MetricCounter: React.FC<MetricCounterProps> = ({ valueStr, title, desc }) 
         <div className="text-5xl md:text-6xl font-semibold tracking-tight text-[#00A3A3] mb-4">
           {prefix}{displayNum}{suffix}
         </div>
-        <h3 className="text-xs uppercase tracking-[0.25em] font-semibold text-[#0a0a0a] mb-2">
+        <h3 className="text-xs uppercase tracking-[0.25em] font-semibold text-[#1E1E1E] mb-2">
           {title}
         </h3>
         <p className="text-xs text-zinc-500 font-normal leading-relaxed">

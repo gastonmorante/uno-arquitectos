@@ -20,7 +20,7 @@ export default function LanguageSelector({ isScrolled, theme = "adaptive" }: Lan
   ];
 
   const isDarkText = theme === "adaptive" && isScrolled;
-  const textColor = isDarkText ? "text-[#4A4A4A] hover:text-[#0a0a0a]" : "text-white/80 hover:text-white";
+  const textColor = isDarkText ? "text-[#4A4A4A] hover:text-[#1E1E1E]" : "text-white/80 hover:text-white";
   const borderColor = isDarkText ? "border-zinc-200" : "border-white/20";
 
   return (
@@ -34,7 +34,7 @@ export default function LanguageSelector({ isScrolled, theme = "adaptive" }: Lan
       </button>
 
       {isOpen && (
-        <div className="absolute left-0 mt-1.5 bg-[#0a0a0a] border border-zinc-800 rounded-xs py-1.5 min-w-[70px] shadow-xl z-50 text-left font-sans">
+        <div className="absolute left-0 mt-1.5 bg-[#1E1E1E] border border-zinc-800 rounded-xs py-1.5 min-w-[70px] shadow-xl z-50 text-left font-sans">
           {languages.map((l) => (
             <button
               key={l.id}

@@ -104,7 +104,7 @@ export default function Contacto() {
             <span className="text-[#00A3A3] text-xs uppercase tracking-[0.3em] font-semibold block mb-3">
               {t("contacto.tagline")}
             </span>
-            <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-[#0a0a0a] mb-6">
+            <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-[#1E1E1E] mb-6">
               {t("contacto.heading")}
             </h2>
             <p className="text-[#4A4A4A] text-sm leading-relaxed mb-10 max-w-md font-normal">
@@ -117,7 +117,7 @@ export default function Contacto() {
               <div className="flex gap-4 items-start">
                 <MapPin className="w-5 h-5 text-[#00A3A3] flex-shrink-0 mt-0.5" />
                 <div>
-                  <h3 className="font-semibold text-xs uppercase tracking-wider text-[#0a0a0a]">{t("contacto.showroomTulum")}</h3>
+                  <h3 className="font-semibold text-xs uppercase tracking-wider text-[#1E1E1E]">{t("contacto.showroomTulum")}</h3>
                   <p className="text-xs text-[#4A4A4A] font-normal mt-1 leading-relaxed">{t("contacto.showroomTulumAddr")}</p>
                 </div>
               </div>
@@ -126,7 +126,7 @@ export default function Contacto() {
               <div className="flex gap-4 items-start">
                 <MapPin className="w-5 h-5 text-zinc-400 flex-shrink-0 mt-0.5" />
                 <div>
-                  <h3 className="font-semibold text-xs uppercase tracking-wider text-[#0a0a0a]">{t("contacto.cdmxOffice")}</h3>
+                  <h3 className="font-semibold text-xs uppercase tracking-wider text-[#1E1E1E]">{t("contacto.cdmxOffice")}</h3>
                   <p className="text-xs text-[#4A4A4A] font-normal mt-1 leading-relaxed">{t("contacto.cdmxOfficeAddr")}</p>
                 </div>
               </div>
@@ -163,7 +163,7 @@ export default function Contacto() {
                 <div className="w-16 h-16 rounded-full bg-[#00A3A3]/10 text-[#00A3A3] flex items-center justify-center mb-6 border border-[#00A3A3]/30">
                   <CheckCircle className="w-8 h-8" />
                 </div>
-                <h3 className="text-2xl font-semibold text-[#0a0a0a] mb-2">{t("contacto.successTitle")}</h3>
+                <h3 className="text-2xl font-semibold text-[#1E1E1E] mb-2">{t("contacto.successTitle")}</h3>
                 <p className="text-[#4A4A4A] text-sm max-w-sm mx-auto leading-relaxed">
                   {t("contacto.successDesc")}
                 </p>
@@ -176,12 +176,12 @@ export default function Contacto() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
-                <h3 className="text-xl font-semibold text-[#0a0a0a] mb-2">{t("contacto.formHeading")}</h3>
+                <h3 className="text-xl font-semibold text-[#1E1E1E] mb-2">{t("contacto.formHeading")}</h3>
                 <p className="text-xs text-[#4A4A4A] mb-6">{t("contacto.formSubheading")}</p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-xs uppercase tracking-wider text-[#0a0a0a] mb-2 font-semibold" htmlFor="con-name">
+                    <label className="block text-xs uppercase tracking-wider text-[#1E1E1E] mb-2 font-semibold" htmlFor="con-name">
                       {t("contacto.fullName")}
                     </label>
                     <input
@@ -191,12 +191,12 @@ export default function Contacto() {
                       placeholder={t("contacto.fullNamePlaceholder")}
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      className="w-full bg-white border border-zinc-300 rounded-xs py-3 px-4 text-sm text-[#0a0a0a] focus:outline-none focus:border-[#00A3A3] transition-colors"
+                      className="w-full bg-white border border-zinc-300 rounded-xs py-3 px-4 text-sm text-[#1E1E1E] focus:outline-none focus:border-[#00A3A3] transition-colors"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs uppercase tracking-wider text-[#0a0a0a] mb-2 font-semibold" htmlFor="con-tel">
+                    <label className="block text-xs uppercase tracking-wider text-[#1E1E1E] mb-2 font-semibold" htmlFor="con-tel">
                       {t("contacto.phone")}
                     </label>
                     <input
@@ -206,13 +206,13 @@ export default function Contacto() {
                       placeholder={t("contacto.phonePlaceholder")}
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
-                      className="w-full bg-white border border-zinc-300 rounded-xs py-3 px-4 text-sm text-[#0a0a0a] focus:outline-none focus:border-[#00A3A3] transition-colors"
+                      className="w-full bg-white border border-zinc-300 rounded-xs py-3 px-4 text-sm text-[#1E1E1E] focus:outline-none focus:border-[#00A3A3] transition-colors"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs uppercase tracking-wider text-[#0a0a0a] mb-2 font-semibold" htmlFor="con-email">
+                  <label className="block text-xs uppercase tracking-wider text-[#1E1E1E] mb-2 font-semibold" htmlFor="con-email">
                     {t("contacto.email")}
                   </label>
                   <input
@@ -222,12 +222,12 @@ export default function Contacto() {
                     placeholder={t("contacto.emailPlaceholder")}
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full bg-white border border-zinc-300 rounded-xs py-3 px-4 text-sm text-[#0a0a0a] focus:outline-none focus:border-[#00A3A3] transition-colors"
+                    className="w-full bg-white border border-zinc-300 rounded-xs py-3 px-4 text-sm text-[#1E1E1E] focus:outline-none focus:border-[#00A3A3] transition-colors"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs uppercase tracking-wider text-[#0a0a0a] mb-2 font-semibold" htmlFor="con-msg">
+                  <label className="block text-xs uppercase tracking-wider text-[#1E1E1E] mb-2 font-semibold" htmlFor="con-msg">
                     {t("contacto.additionalMsg")}
                   </label>
                   <textarea
@@ -237,7 +237,7 @@ export default function Contacto() {
                     placeholder={t("contacto.additionalMsgPlaceholder")}
                     value={msg}
                     onChange={(e) => setMsg(e.target.value)}
-                    className="w-full bg-white border border-zinc-300 rounded-xs p-4 text-sm text-[#0a0a0a] focus:outline-none focus:border-[#00A3A3] transition-colors"
+                    className="w-full bg-white border border-zinc-300 rounded-xs p-4 text-sm text-[#1E1E1E] focus:outline-none focus:border-[#00A3A3] transition-colors"
                   ></textarea>
                 </div>
 
